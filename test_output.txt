@@ -1,0 +1,4 @@
+[SEED] Admin already exists: info@aitechpulze.com (ADMIN)
+[EMAIL] Sending student application notification to info@aitechpulze.com
+[EMAIL] Email sent successfully to ['info@aitechpulze.com']
+DONE
