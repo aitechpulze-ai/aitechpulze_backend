@@ -1,37 +1,24 @@
-# Frontend (not in this repo - deployed separately on Hostinger)
-frontend/
+# Environment files
+.env
+.env.*
+!.env.example
 
-# Backend
-backend/.venv/
-backend/__pycache__/
-backend/.env
-backend/test_email.py
-
-# Python cache
-*.pyc
+# Python
 __pycache__/
-*.py[cod]
-*$py.class
+*.pyc
+*.pyo
+instance/
+.pytest_cache/
 
-# Virtual environments
-venv/
-.venv/
-ENV/
-env/
-
-# Logs
-*.log
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
+# Node
+node_modules/
+build/
+.eslintcache
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Temporary files
-*.tmp
-temp/
+# Test files
+backend/test_*.py
+backend/test_output.txt

@@ -1,16 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
-import App from "./App";
-import "./index.css";
-import "./animations.css";
-import "./effects.css";
-import "./wizard.css";
-import { createRipple } from "./utils/ripple";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import './index.css';
+import App from './App';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <HelmetProvider>
@@ -20,12 +15,3 @@ root.render(
     </HelmetProvider>
   </React.StrictMode>
 );
-
-// Add ripple effect to all buttons
-document.addEventListener('click', (e) => {
-  const button = e.target.closest('.btn');
-  if (button) {
-    const rippleEvent = { ...e, currentTarget: button };
-    createRipple(rippleEvent);
-  }
-});
