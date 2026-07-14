@@ -279,7 +279,7 @@ def issue_certificate(internship_id):
         return jsonify({'error': 'Certificate file required'}), 400
 
     cert_num = next_cert_id()
-    cert_url = upload_file_to_cloudinary_or_local(cert_file, folder='aitechpulze/certificates', resource_type='raw')
+    cert_url = upload_file_to_cloudinary_or_local(cert_file, folder='aitechpulze/certificates', resource_type='image')
     if not cert_url:
         return jsonify({'error': 'Failed to upload certificate file.'}), 500
 
