@@ -12,21 +12,34 @@ export default function Careers() {
         description="Join AITechPulze — open roles for React developers, AI/ML engineers, UI/UX designers, and full stack developers. Apply via WhatsApp."
         path="/careers"
       />
-      <div style={{ paddingTop: '80px' }}>
-        <section className="section-pad hero-gradient grid-bg">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <main className="bg-[#060713] text-white min-h-screen selection:bg-blue-950 selection:text-blue-200 overflow-x-hidden">
+        {/* Hero */}
+        <section className="pt-32 pb-20 bg-[#060713] relative overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] opacity-10" />
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px] opacity-10" />
+            <div
+              className="absolute inset-0 opacity-[0.015]"
+              style={{
+                backgroundImage:
+                  'linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px)',
+                backgroundSize: '50px 50px',
+              }}
+            />
+          </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: '#60a5fa' }}>Join Us</span>
             <h1 className="text-4xl md:text-6xl font-black text-white mt-3 mb-5">
-              Build Your Career at <span className="gradient-text">AITechPulze</span>
+              Build Your Career at <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400">AITechPulze</span>
             </h1>
-            <p className="max-w-xl mx-auto text-lg" style={{ color: 'rgba(255,255,255,0.6)' }}>
+            <p className="max-w-xl mx-auto text-lg text-slate-400">
               Work on live products, real AI projects, and enterprise software. Grow fast with a team that ships.
             </p>
           </div>
         </section>
 
         {/* Why Join */}
-        <section className="py-16" style={{ background: '#0d1424' }}>
+        <section className="py-20 bg-[#08091a]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
               {[
@@ -35,10 +48,10 @@ export default function Careers() {
                 { icon: '🤝', title: 'Collaborative', desc: 'Small, tight-knit team where your work makes a real impact.' },
                 { icon: '📜', title: 'Certificate', desc: 'Internship certificate and LinkedIn recommendation on completion.' },
               ].map((item) => (
-                <div key={item.title} className="glass rounded-2xl p-6 text-center card-hover">
+                <div key={item.title} className="bg-[#0d0e22]/50 border border-white/10 backdrop-blur-md rounded-2xl p-6 text-center card-hover">
                   <div className="text-3xl mb-3">{item.icon}</div>
                   <h3 className="text-white font-bold mb-2">{item.title}</h3>
-                  <p className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>{item.desc}</p>
+                  <p className="text-sm text-slate-400">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -47,7 +60,7 @@ export default function Careers() {
             <h2 className="text-2xl font-black text-white mb-8">Open Positions</h2>
             <div className="space-y-4">
               {CAREERS.map((job) => (
-                <div key={job.title} className="glass rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 card-hover">
+                <div key={job.title} className="bg-[#0d0e22]/50 border border-white/10 backdrop-blur-md rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 card-hover">
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-3 mb-2">
                       <h3 className="text-white font-black text-lg">{job.title}</h3>
@@ -68,7 +81,7 @@ export default function Careers() {
                         {job.dept}
                       </span>
                     </div>
-                    <p className="text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>{job.desc}</p>
+                    <p className="text-sm text-slate-400">{job.desc}</p>
                   </div>
                   <a
                     href={applyLink(job.title)}
@@ -83,9 +96,9 @@ export default function Careers() {
             </div>
 
             {/* General Apply */}
-            <div className="mt-12 glass rounded-2xl p-8 text-center">
+            <div className="mt-12 bg-[#0d0e22]/50 border border-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
               <h3 className="text-white font-black text-xl mb-3">Don't see your role?</h3>
-              <p className="mb-6" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              <p className="mb-6 text-slate-400">
                 We're always open to talented people. Send us your portfolio and we'll be in touch.
               </p>
               <a
@@ -99,7 +112,7 @@ export default function Careers() {
             </div>
           </div>
         </section>
-      </div>
+      </main>
     </>
   );
 }

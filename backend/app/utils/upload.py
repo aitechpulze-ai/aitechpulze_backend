@@ -5,32 +5,13 @@ from flask import current_app, request
 
 def upload_file_to_cloudinary_or_local(file_storage, folder='aitechpulze', resource_type='auto'):
     """
-    Attempts to upload the file to Cloudinary.
-    If it fails, saves it locally to the Flask app static/uploads directory
-    and returns the local serving URL.
+    Saves files locally to the Flask app static/uploads directory as the primary method.
+    Falls back to Cloudinary if local storage fails.
     """
     if not file_storage or not file_storage.filename:
         return None
 
-    # 1. Attempt Cloudinary Upload
-    try:
-        file_storage.seek(0)
-        file_bytes = file_storage.read()
-        
-        print(f"[UPLOAD] Attempting Cloudinary upload: {file_storage.filename}")
-        result = cloudinary.uploader.upload(
-            (file_storage.filename, file_bytes),
-            folder=folder,
-            resource_type=resource_type
-        )
-        url = result.get('secure_url')
-        if url:
-            print(f"[UPLOAD] Cloudinary success: {url}")
-            return url
-    except Exception as e:
-        print(f"[UPLOAD] Cloudinary failed. Error: {e}. Falling back to local storage...")
-
-    # 2. Local Storage Fallback
+    # 1. Primary: Local Storage
     try:
         # Create static/uploads directory
         static_folder = os.path.join(current_app.root_path, 'static', 'uploads')
@@ -48,8 +29,26 @@ def upload_file_to_cloudinary_or_local(file_storage, folder='aitechpulze', resou
 
         # Generate local serving URL
         local_url = f"{request.url_root.rstrip('/')}/static/uploads/{unique_name}"
-        print(f"[UPLOAD] Local storage fallback success: {local_url}")
+        print(f"[UPLOAD] Local storage success: {local_url}")
         return local_url
     except Exception as local_err:
-        print(f"[UPLOAD] Critical: Both Cloudinary and local storage failed! Error: {local_err}")
+        print(f"[UPLOAD] Local storage failed: {local_err}. Falling back to Cloudinary...")
+
+    # 2. Fallback: Cloudinary Upload
+    try:
+        file_storage.seek(0)
+        file_bytes = file_storage.read()
+        
+        print(f"[UPLOAD] Attempting Cloudinary upload: {file_storage.filename}")
+        result = cloudinary.uploader.upload(
+            (file_storage.filename, file_bytes),
+            folder=folder,
+            resource_type=resource_type
+        )
+        url = result.get('secure_url')
+        if url:
+            print(f"[UPLOAD] Cloudinary success: {url}")
+            return url
+    except Exception as e:
+        print(f"[UPLOAD] Critical: Both local storage and Cloudinary failed! Error: {e}")
         return None
