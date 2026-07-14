@@ -62,7 +62,7 @@ def seed_admin(app):
             id=uuid.uuid4(),
             full_name='Admin',
             email=app.config['ADMIN_EMAIL'],
-            password=generate_password_hash(app.config['ADMIN_PASSWORD']),
+            password=generate_password_hash(app.config['ADMIN_PASSWORD'], method='pbkdf2:sha256:150000'),
             role='ADMIN',
             username='admin',
             active=True,
@@ -74,4 +74,10 @@ def seed_admin(app):
         db.session.commit()
         print(f"[SEED] Admin created: {app.config['ADMIN_EMAIL']}")
     else:
-        print(f"[SEED] Admin already exists: {existing.email} ({existing.role})")
+        # If admin exists but uses old hash, update it to speed up login instantly
+        if not existing.password.startswith('pbkdf2:sha256:150000'):
+            existing.password = generate_password_hash(app.config['ADMIN_PASSWORD'], method='pbkdf2:sha256:150000')
+            db.session.commit()
+            print(f"[SEED] Updated existing admin password to optimized hash method")
+        else:
+            print(f"[SEED] Admin already exists and is optimized: {existing.email}")
