@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token
 from app.models.user import User
+from werkzeug.security import check_password_hash
 import bcrypt
 
 auth_bp = Blueprint('auth', __name__)
@@ -12,7 +13,6 @@ def verify_password(plain: str, hashed: str) -> bool:
         if hashed.startswith('$2'):
             return bcrypt.checkpw(plain.encode('utf-8'), hashed.encode('utf-8'))
         # Fall back to Werkzeug
-        from werkzeug.security import check_password_hash
         return check_password_hash(hashed, plain)
     except Exception:
         return False
@@ -31,6 +31,16 @@ def login():
         return jsonify({'error': 'No account found with this email'}), 401
     if not verify_password(password, user.password):
         return jsonify({'error': 'Invalid password'}), 401
+
+    # Dynamic re-hashing of password on successful login to speed up future logins!
+    if not user.password.startswith('pbkdf2:sha256:150000'):
+        from werkzeug.security import generate_password_hash
+        from app import db
+        try:
+            user.password = generate_password_hash(password, method='pbkdf2:sha256:150000')
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
 
     # Allow SUPER_ADMIN to log in as admin portal
     allowed_roles = {'ADMIN': ['ADMIN', 'SUPER_ADMIN'], 'MENTOR': ['TRAINER'], 'STUDENT': ['INTERN']}

@@ -5,16 +5,19 @@ function LegalLayout({ title, path, children }) {
   return (
     <>
       <SEO title={title} path={path} />
-      <div style={{ paddingTop: '80px' }}>
-        <section className="py-16 hero-gradient grid-bg">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div style={{ paddingTop: '80px' }} className="bg-[#060713]">
+        <section className="py-16 bg-[#060713] relative overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none opacity-20">
+            <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-900 rounded-full blur-[100px]" />
+          </div>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <h1 className="text-4xl md:text-5xl font-black text-white mb-3">{title}</h1>
-            <p className="text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>Last updated: January 2025 · AITechPulze · {COMPANY.location}</p>
+            <p className="text-xs text-slate-400">Last updated: January 2025 · AITechPulze · {COMPANY.location}</p>
           </div>
         </section>
-        <section className="py-16" style={{ background: '#0d1424' }}>
+        <section className="py-16 bg-[#060713] border-t border-white/5">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="glass rounded-2xl p-8 md:p-12 prose prose-invert max-w-none">
+            <div className="bg-[#0d0e22]/50 border border-white/10 rounded-3xl p-8 md:p-12 prose prose-invert max-w-none shadow-[0_10px_35px_rgba(0,0,0,0.3)]">
               {children}
             </div>
           </div>

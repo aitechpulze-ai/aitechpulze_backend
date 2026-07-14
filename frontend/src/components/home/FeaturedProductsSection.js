@@ -31,7 +31,7 @@ export default function FeaturedProductsSection() {
             <motion.article
               key={product.name}
               {...fadeUp(0.08 + index * 0.08)}
-              className="bg-white rounded-[2rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col h-full hover:shadow-[0_20px_60px_rgba(37,99,235,0.08)] transition-all duration-300 group"
+              className="bg-[#0d0e22]/50 backdrop-blur-md rounded-[2rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.3)] border border-white/10 flex flex-col h-full hover:shadow-[0_20px_60px_rgba(37,99,235,0.15)] transition-all duration-300 group"
             >
               <div className="relative h-56 bg-[#0B0F19] overflow-hidden flex items-center justify-center p-8 border-b border-slate-800/50">
                 <img

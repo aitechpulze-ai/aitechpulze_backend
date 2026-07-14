@@ -81,7 +81,7 @@ def send_quote_request_email(name, email, phone, project_type, features, estimat
         </div>
         """
         })
-        print(f"[EMAIL] Quote email sent to aitechpulze@gmail.com", flush=True)
+        print(f"[EMAIL] Quote email sent to info@aitechpulze.com", flush=True)
     except Exception as e:
         print(f"[EMAIL] Failed to send quote email: {e}", flush=True)
 
@@ -157,3 +157,4 @@ def send_student_welcome_email(full_name, email, domain):
         print(f"[EMAIL] Welcome email sent to {email}", flush=True)
     except Exception as e:
         print(f"[EMAIL] Failed to send welcome email: {e}", flush=True)
+

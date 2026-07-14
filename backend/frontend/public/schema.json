@@ -1,0 +1,27 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AITechPulze",
+  "url": "https://aitechpulze.com",
+  "logo": "https://aitechpulze.com/logo.png",
+  "description": "Professional AI and web development services for startups, businesses and students",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-9585776088",
+    "contactType": "Customer Service",
+    "email": "aitechpulze@gmail.com"
+  },
+  "sameAs": [
+    "https://wa.me/919585776088"
+  ],
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "INR",
+    "lowPrice": "1500",
+    "highPrice": "4000"
+  }
+}

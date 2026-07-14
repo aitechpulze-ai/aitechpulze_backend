@@ -37,13 +37,13 @@ const TAGS = ['AI & Data Science', 'Healthcare', 'Web Applications', 'IoT', 'Res
 
 export default function AcademicHubSection() {
   return (
-    <section className="section" style={{ background: 'linear-gradient(180deg, #ecfdf5 0%, #f0f9ff 100%)' }}>
+    <section className="section" style={{ background: 'linear-gradient(180deg, #060713 0%, #08091a 100%)' }}>
       <div className="container">
         <div className="max-w-3xl mx-auto text-center">
-          <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 text-emerald-700 text-sm font-bold tracking-wide uppercase mb-4 border border-emerald-200 shadow-sm">
+          <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0d0e22] text-emerald-400 text-sm font-bold tracking-wide uppercase mb-4 border border-white/10 shadow-sm">
             Academic Innovation Hub
           </motion.div>
-          <motion.h2 {...fadeUp(0.05)} className="heading-md">
+          <motion.h2 {...fadeUp(0.05)} className="heading-md text-white">
             Empowering <span className="text-gradient">Student Innovation</span>
           </motion.h2>
           <motion.p {...fadeUp(0.1)} className="mt-4 text-lg" style={{ color: 'var(--text-3)' }}>
@@ -53,8 +53,8 @@ export default function AcademicHubSection() {
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
           {HUB_CARDS.map((card, index) => (
-            <motion.div key={card.title} {...fadeUp(0.08 + index * 0.05)} className="card p-6 text-center">
-              <div className="w-12 h-12 mx-auto mb-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-xl">
+            <motion.div key={card.title} {...fadeUp(0.08 + index * 0.05)} className="card p-6 text-center bg-[#0d0e22]/50 border border-white/10 backdrop-blur-md">
+              <div className="w-12 h-12 mx-auto mb-5 rounded-2xl bg-[#060713] border border-white/10 flex items-center justify-center text-xl">
                 {card.icon}
               </div>
               <h3 className="font-bold text-lg mb-2" style={{ color: 'var(--text-1)' }}>
@@ -69,7 +69,7 @@ export default function AcademicHubSection() {
 
         <motion.div {...fadeUp(0.15)} className="mt-8 flex flex-wrap justify-center gap-2">
           {TAGS.map((tag) => (
-            <span key={tag} className="tag">
+            <span key={tag} className="tag bg-blue-950/40 border border-white/10 text-slate-300">
               {tag}
             </span>
           ))}
@@ -77,24 +77,24 @@ export default function AcademicHubSection() {
 
         <motion.div {...fadeUp(0.18)} className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
           {ACADEMIC_PROJECTS.slice(0, 3).map((project, index) => (
-            <article key={project.title} className="card overflow-hidden group">
-              <div className="relative h-44 overflow-hidden bg-slate-50">
+            <article key={project.title} className="card overflow-hidden group bg-[#0d0e22]/50 border border-white/10 backdrop-blur-md">
+              <div className="relative h-44 overflow-hidden bg-[#060713]">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   onError={(e) => {
                     e.target.style.display = 'none';
-                    e.target.parentNode.style.background = 'linear-gradient(135deg,#eff6ff,#eef2ff)';
+                    e.target.parentNode.style.background = 'linear-gradient(135deg,#0d0e22,#060713)';
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-extrabold tracking-[0.18em] uppercase text-slate-700 backdrop-blur">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#060713]/80 via-transparent to-transparent" />
+                <div className="absolute top-4 left-4 rounded-full bg-[#060713]/80 px-3 py-1 text-[11px] font-extrabold tracking-[0.18em] uppercase text-slate-300 border border-white/10 backdrop-blur">
                   Project {index + 1}
                 </div>
               </div>
               <div className="p-5">
-                <div className="text-xs font-extrabold uppercase tracking-[0.18em] mb-2" style={{ color: 'var(--primary)' }}>
+                <div className="text-xs font-extrabold uppercase tracking-[0.18em] mb-2" style={{ color: 'var(--primary-light)' }}>
                   {project.category}
                 </div>
                 <h3 className="font-bold text-lg mb-2" style={{ color: 'var(--text-1)' }}>

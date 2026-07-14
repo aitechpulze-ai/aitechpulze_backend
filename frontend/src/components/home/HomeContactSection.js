@@ -12,17 +12,17 @@ const fadeUp = (delay = 0) => ({
 
 export default function HomeContactSection() {
   return (
-    <section className="section-sm bg-white">
+    <section className="section-sm bg-[#060713]">
       <div className="container">
         <motion.div
           {...fadeUp(0)}
-          className="rounded-[32px] p-8 md:p-12 lg:p-14 relative overflow-hidden border border-blue-100 bg-[linear-gradient(135deg,#eff6ff_0%,#eef2ff_55%,#f0f9ff_100%)] shadow-[0_24px_80px_rgba(37,99,235,0.08)]"
+          className="rounded-[32px] p-8 md:p-12 lg:p-14 relative overflow-hidden border border-white/10 bg-[linear-gradient(135deg,#0d0e22_0%,#08091a_55%,#060713_100%)] shadow-[0_24px_80px_rgba(0,0,0,0.5)]"
         >
-          <div className="absolute -top-24 -right-16 w-72 h-72 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.10) 0%, transparent 70%)', filter: 'blur(40px)' }} />
+          <div className="absolute -top-24 -right-16 w-72 h-72 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%)', filter: 'blur(40px)' }} />
 
           <div className="max-w-3xl">
             <div className="section-label w-fit mb-4">Get In Touch</div>
-            <h2 className="heading-md">
+            <h2 className="heading-md text-white">
               Ready to <span className="text-gradient">Build Something?</span>
             </h2>
             <p className="mt-4 max-w-2xl text-base md:text-lg" style={{ color: 'var(--text-3)' }}>
@@ -36,13 +36,13 @@ export default function HomeContactSection() {
                 href={COMPANY.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card p-5 flex items-center gap-4 border border-emerald-200 bg-white/90"
+                className="card p-5 flex items-center gap-4 border border-emerald-900/30 bg-[#0d0e22]/50 backdrop-blur-md"
               >
-                <div className="w-11 h-11 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-xl">
+                <div className="w-11 h-11 rounded-2xl bg-emerald-950/20 border border-emerald-900/30 flex items-center justify-center text-xl">
                   💬
                 </div>
                 <div>
-                  <div className="font-bold text-slate-900">WhatsApp</div>
+                  <div className="font-bold text-white">WhatsApp</div>
                   <div className="text-sm" style={{ color: 'var(--text-4)' }}>
                     Instant reply
                   </div>
@@ -51,13 +51,13 @@ export default function HomeContactSection() {
 
               <a
                 href={COMPANY.mailto}
-                className="card p-5 flex items-center gap-4 border border-slate-200 bg-white/90"
+                className="card p-5 flex items-center gap-4 border border-white/10 bg-[#0d0e22]/50 backdrop-blur-md"
               >
-                <div className="w-11 h-11 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-xl">
+                <div className="w-11 h-11 rounded-2xl bg-[#060713] border border-white/10 flex items-center justify-center text-xl">
                   ✉️
                 </div>
                 <div>
-                  <div className="font-bold text-slate-900">Email Us</div>
+                  <div className="font-bold text-white">Email Us</div>
                   <div className="text-sm" style={{ color: 'var(--text-4)' }}>
                     {COMPANY.email}
                   </div>
@@ -66,10 +66,10 @@ export default function HomeContactSection() {
             </div>
 
             <div className="lg:col-span-5 flex flex-col gap-4 lg:items-end">
-              <Link to="/get-quote" className="btn-primary w-full lg:w-auto justify-center px-8 py-4">
+              <Link to="/get-quote" className="btn-primary w-full lg:w-auto justify-center px-8 py-4 cursor-pointer">
                 Start Your Project
               </Link>
-              <Link to="/contact" className="btn-ghost w-full lg:w-auto justify-center px-8 py-4">
+              <Link to="/contact" className="btn-ghost w-full lg:w-auto justify-center px-8 py-4 cursor-pointer">
                 View All Contact Options
               </Link>
             </div>

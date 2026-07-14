@@ -53,22 +53,22 @@ export default function Services() {
       <SEO title="Services" description="End-to-end technology services from AiTechPulze." path="/services" />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-white relative overflow-hidden">
+      <section className="pt-32 pb-16 bg-[#060713] relative overflow-hidden">
         {/* Subtle background gradient */}
-        <div className="absolute inset-0 pointer-events-none opacity-40">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-[80px]" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-50 rounded-full blur-[80px]" />
+        <div className="absolute inset-0 pointer-events-none opacity-20">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-900 rounded-full blur-[100px]" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-900 rounded-full blur-[100px]" />
         </div>
 
         <div className="container mx-auto px-6 max-w-4xl text-center relative z-10">
           <motion.div {...fadeUp(0)}>
-            <div className="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-xs font-bold tracking-widest uppercase mb-6 border border-blue-100 shadow-sm">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-blue-950/40 text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 border border-blue-900/30 shadow-sm">
               SERVICES
             </div>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
-              What We <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Build For You</span>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6">
+              What We <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Build For You</span>
             </h1>
-            <p className="text-sm md:text-base text-slate-500 max-w-2xl mx-auto leading-relaxed font-medium">
+            <p className="text-sm md:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
               End-to-end technology services — from AI model development to cloud deployment. 
               Every project delivered with quality, speed, and clarity.
             </p>
@@ -77,30 +77,30 @@ export default function Services() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-12 bg-slate-50/50">
+      <section className="py-12 bg-[#060713]">
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
               <motion.div 
                 key={s.title} 
                 {...fadeUp(i * 0.05)}
-                className="bg-white rounded-3xl p-6 md:p-8 flex flex-col group shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_20px_60px_rgba(37,99,235,0.08)] transition-all duration-300 hover:-translate-y-1"
+                className="bg-[#0d0e22]/50 rounded-3xl p-6 md:p-8 flex flex-col group border border-white/10 hover:border-blue-500/30 hover:shadow-[0_20px_60px_rgba(6,182,212,0.15)] transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-700 mb-6 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 mb-6 group-hover:bg-blue-950/40 group-hover:text-cyan-400 transition-colors">
                   {s.icon}
                 </div>
-                <div className="text-blue-600 text-[10px] font-bold tracking-widest uppercase mb-2">
+                <div className="text-cyan-400 text-[10px] font-bold tracking-widest uppercase mb-2">
                   {s.tag}
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-3">
+                <h3 className="text-lg font-bold text-white mb-3">
                   {s.title}
                 </h3>
-                <p className="text-xs md:text-sm text-slate-500 leading-relaxed mb-8 flex-grow">
+                <p className="text-xs md:text-sm text-slate-400 leading-relaxed mb-8 flex-grow">
                   {s.desc}
                 </p>
-                <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                  <span className="text-xs font-bold text-blue-600">{s.price}</span>
-                  <div className="w-6 h-6 rounded-full bg-slate-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                  <span className="text-xs font-bold text-cyan-400">{s.price}</span>
+                  <div className="w-6 h-6 rounded-full bg-white/5 text-cyan-400 flex items-center justify-center group-hover:bg-cyan-950/40 transition-colors">
                     <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
                   </div>
                 </div>
@@ -111,30 +111,30 @@ export default function Services() {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-24 bg-[#060713] relative overflow-hidden border-t border-white/5">
         <div className="container mx-auto px-6 max-w-5xl relative z-10 text-center">
           <motion.div {...fadeUp(0)} className="mb-16">
-            <div className="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-bold tracking-widest uppercase mb-4 border border-blue-100 shadow-sm">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-blue-950/40 text-blue-400 text-[10px] font-bold tracking-widest uppercase mb-4 border border-blue-900/30 shadow-sm">
               OUR PROCESS
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-              From Idea to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Launch</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+              From Idea to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Launch</span>
             </h2>
           </motion.div>
 
           <div className="relative">
             {/* Connecting Line (Desktop) */}
-            <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-blue-100 via-indigo-100 to-blue-100" />
+            <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-blue-950 via-cyan-950 to-blue-950" />
             
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {processSteps.map((step, i) => (
                 <motion.div key={step.num} {...fadeUp(i * 0.1)} className="relative flex flex-col items-center group">
-                  <div className="w-16 h-16 rounded-full bg-white border-4 border-slate-50 shadow-lg flex items-center justify-center text-slate-400 mb-6 group-hover:border-blue-50 group-hover:text-blue-600 group-hover:shadow-blue-500/20 transition-all z-10 relative">
+                  <div className="w-16 h-16 rounded-full bg-[#0d0e22] border-4 border-white/10 shadow-lg flex items-center justify-center text-slate-500 mb-6 group-hover:border-cyan-500/40 group-hover:text-cyan-400 group-hover:shadow-cyan-500/10 transition-all z-10 relative">
                     {step.icon}
                   </div>
-                  <div className="text-blue-600 text-xs font-bold mb-2">{step.num}</div>
-                  <h3 className="text-sm font-bold text-slate-900 mb-2">{step.title}</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed max-w-[200px]">
+                  <div className="text-cyan-400 text-xs font-bold mb-2">{step.num}</div>
+                  <h3 className="text-sm font-bold text-white mb-2">{step.title}</h3>
+                  <p className="text-xs text-slate-400 leading-relaxed max-w-[200px]">
                     {step.desc}
                   </p>
                 </motion.div>
@@ -145,22 +145,22 @@ export default function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="pb-24 bg-white relative">
+      <section className="pb-24 bg-[#060713] relative border-t border-white/5 pt-24">
         <div className="container mx-auto px-6 max-w-4xl">
           <motion.div 
             {...fadeUp(0)}
-            className="p-12 md:p-16 rounded-[2.5rem] text-center relative overflow-hidden bg-gradient-to-br from-indigo-50/80 via-blue-50/80 to-white shadow-[0_20px_60px_rgba(37,99,235,0.05)] border border-blue-100/50"
+            className="p-12 md:p-16 rounded-[2.5rem] text-center relative overflow-hidden bg-gradient-to-br from-[#0d0e22] to-[#060713] shadow-[0_20px_60px_rgba(0,0,0,0.35)] border border-white/10"
           >
-            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4 tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4 tracking-tight">
               Ready to Start Your Project?
             </h2>
-            <p className="text-slate-500 text-sm md:text-base font-medium mb-8 max-w-md mx-auto">
+            <p className="text-slate-400 text-sm md:text-base font-medium mb-8 max-w-md mx-auto">
               Tell us what you need — we'll deliver it professionally and on time.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link 
                 to="/get-quote" 
-                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-bold rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:-translate-y-0.5 transition-all"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-bold rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:-translate-y-0.5 transition-all cursor-pointer"
               >
                 Get Free Quote &rarr;
               </Link>
@@ -168,7 +168,7 @@ export default function Services() {
                 href={COMPANY.whatsapp} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-flex items-center gap-2 justify-center px-6 py-3 bg-white text-slate-700 text-sm font-bold rounded-xl border border-slate-200 shadow-sm hover:border-slate-300 hover:bg-slate-50 transition-all"
+                className="inline-flex items-center gap-2 justify-center px-6 py-3 bg-white/5 text-white text-sm font-bold rounded-xl border border-white/10 shadow-sm hover:bg-white/10 transition-all cursor-pointer"
               >
                 <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
