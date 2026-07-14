@@ -52,7 +52,7 @@ def send_quote_request_email(name, email, phone, project_type, features, estimat
     try:
         resend.Emails.send({
             "from": "AiTechPulze <info@aitechpulze.com>",
-            "to": ["aitechpulze@gmail.com"],
+            "to": ["info@aitechpulze.com"],
             "reply_to": email,
             "subject": f"💼 New Project Quote Request from {name}",
             "html": f"""

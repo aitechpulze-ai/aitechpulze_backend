@@ -94,7 +94,7 @@ def approve_application(lead_id):
             full_name=lead.full_name,
             email=lead.email,
             phone=lead.phone,
-            password=generate_password_hash(raw_password),
+            password=generate_password_hash(raw_password, method='pbkdf2:sha256:150000'),
             role='INTERN',
             username=username,
             active=True,
@@ -129,12 +129,12 @@ def approve_application(lead_id):
         lead.admin_notes = f'Approved. Student ID: {enrollment_id}, Username: {username}'
         db.session.commit()
 
-        # Send credentials via email
-        try:
-            from app.utils.email import send_credentials_email
-            send_credentials_email(lead.full_name, lead.email, enrollment_id, username, raw_password, domain, plan)
-        except Exception as e:
-            print(f'[EMAIL] Failed: {e}')
+        # Send credentials via email (disabled, handled by frontend EmailJS)
+        # try:
+        #     from app.utils.email import send_credentials_email
+        #     send_credentials_email(lead.full_name, lead.email, enrollment_id, username, raw_password, domain, plan)
+        # except Exception as e:
+        #     print(f'[EMAIL] Failed: {e}')
 
         return jsonify({'message': 'Approved', 'enrollment_id': enrollment_id, 'username': username, 'password': raw_password})
     except Exception as e:
@@ -210,7 +210,7 @@ def add_mentor():
             id=uuid.uuid4(),
             full_name=name,
             email=email,
-            password=generate_password_hash(password),
+            password=generate_password_hash(password, method='pbkdf2:sha256:150000'),
             role='TRAINER',
             username=email.split('@')[0],
             phone=domain,  # store domain in phone temporarily
