@@ -75,29 +75,30 @@ def apply():
     except Exception as e:
         print(f'[SHEETS] Sync failed: {e}')
 
-    # Send application notification emails
-    try:
-        from app.utils.email import send_student_application_admin_email, send_student_welcome_email
-        # 1. Alert admin (info@aitechpulze.com)
-        send_student_application_admin_email({
-            'full_name': full_name,
-            'email': email,
-            'phone': phone,
-            'domain': domain,
-            'duration': duration,
-            'college': college,
-            'year': year,
-            'department': department,
-            'start_date': start_date,
-        })
-        # 2. Send welcome email to student
-        send_student_welcome_email(full_name, email, domain)
-    except Exception as e:
-        print(f'[EMAIL] Application email triggers failed: {e}')
+    # Send application notification emails (disabled, handled by frontend EmailJS)
+    # try:
+    #     from app.utils.email import send_student_application_admin_email, send_student_welcome_email
+    #     # 1. Alert admin (info@aitechpulze.com)
+    #     send_student_application_admin_email({
+    #         'full_name': full_name,
+    #         'email': email,
+    #         'phone': phone,
+    #         'domain': domain,
+    #         'duration': duration,
+    #         'college': college,
+    #         'year': year,
+    #         'department': department,
+    #         'start_date': start_date,
+    #     })
+    #     # 2. Send welcome email to student
+    #     send_student_welcome_email(full_name, email, domain)
+    # catch Exception as e:
+    #     print(f'[EMAIL] Application email triggers failed: {e}')
 
     return jsonify({
         'message': 'Application submitted successfully! Awaiting admin approval.',
-        'id': str(lead.id)
+        'id': str(lead.id),
+        'resume_url': resume_url
     }), 201
 
 
@@ -150,20 +151,20 @@ def submit_quote_request():
     except Exception as db_err:
         print(f'[DATABASE] Failed to save quote lead: {db_err}')
 
-    # Send notification email to admin
-    try:
-        from app.utils.email import send_quote_request_email
-        send_quote_request_email(
-            name=name,
-            email=email,
-            phone=phone,
-            project_type=project_type,
-            features=features,
-            estimated_cost=estimated_cost,
-            description=description
-        )
-    except Exception as email_err:
-        print(f'[EMAIL] Failed to send quote email: {email_err}')
+    # Send notification email to admin (disabled, handled by frontend EmailJS)
+    # try:
+    #     from app.utils.email import send_quote_request_email
+    #     send_quote_request_email(
+    #         name=name,
+    #         email=email,
+    #         phone=phone,
+    #         project_type=project_type,
+    #         features=features,
+    #         estimated_cost=estimated_cost,
+    #         description=description
+    #     )
+    # catch Exception as email_err:
+    #     print(f'[EMAIL] Failed to send quote email: {email_err}')
 
     return jsonify({
         'message': 'Your quote request has been submitted successfully! We will get back to you soon.'

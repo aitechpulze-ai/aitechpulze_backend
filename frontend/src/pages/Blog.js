@@ -25,12 +25,12 @@ export default function Blog() {
     <>
       <SEO title="Blog | AiTechPulze" description="Read our latest insights on AI, web development, and student innovation." path="/blog" />
 
-      <section className="pt-32 pb-24 bg-slate-50/50 min-h-screen">
+      <section className="pt-32 pb-24 bg-[#060713] min-h-screen">
         <div className="container mx-auto px-6 max-w-6xl">
           
           <div className="text-center mb-12">
             <motion.div {...fadeUp(0)}>
-              <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-8">
+              <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-8">
                 Tech Blog - AI, Web Development & Student Innovation
               </h1>
               
@@ -40,7 +40,7 @@ export default function Blog() {
                   <button 
                     key={f}
                     onClick={() => setFilter(f)}
-                    className={`px-5 py-2 rounded-full text-xs font-bold transition-all border ${filter === f ? 'bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-500/20' : 'bg-white text-slate-600 border-slate-200 hover:border-blue-300'}`}
+                    className={`px-5 py-2 rounded-full text-xs font-bold transition-all border cursor-pointer ${filter === f ? 'bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-500/20' : 'bg-white/5 text-slate-400 border-white/10 hover:border-blue-500 hover:text-white'}`}
                   >
                     {f}
                   </button>
@@ -59,27 +59,27 @@ export default function Blog() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-white rounded-[2rem] p-8 shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-slate-100 flex flex-col h-full hover:shadow-[0_20px_60px_rgba(37,99,235,0.08)] transition-shadow duration-300"
+                  className="bg-[#0d0e22]/50 rounded-[2rem] p-8 border border-white/10 flex flex-col h-full hover:border-cyan-400/30 transition-all duration-300 shadow-[0_10px_35px_rgba(0,0,0,0.3)]"
                 >
                   <div className="flex justify-between items-center mb-4">
-                    <div className="text-blue-600 text-[10px] font-bold tracking-widest uppercase">
+                    <div className="text-cyan-400 text-[10px] font-bold tracking-widest uppercase">
                       {post.category}
                     </div>
-                    <div className="text-[10px] font-bold text-slate-400">
+                    <div className="text-[10px] font-bold text-slate-500">
                       {post.date}
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-bold text-slate-900 mb-4 leading-tight">{post.title}</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed mb-8 flex-grow">
+                  <h3 className="text-xl font-bold text-white mb-4 leading-tight">{post.title}</h3>
+                  <p className="text-xs text-slate-400 leading-relaxed mb-8 flex-grow">
                     {post.excerpt}
                   </p>
                   
-                  <div className="flex justify-between items-center pt-6 border-t border-slate-100 mt-auto">
-                    <div className="text-[10px] font-bold text-slate-400">
+                  <div className="flex justify-between items-center pt-6 border-t border-white/10 mt-auto">
+                    <div className="text-[10px] font-bold text-slate-500">
                       {post.readTime}
                     </div>
-                    <Link to={`/blog/${post.slug || '#'}`} className="text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors">
+                    <Link to={`/blog/${post.slug || '#'}`} className="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
                       Read More &rarr;
                     </Link>
                   </div>

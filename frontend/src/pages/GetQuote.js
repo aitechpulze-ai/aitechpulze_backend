@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/SEO';
 import { COMPANY } from '../data/content';
 import { API_BASE_URL } from '../config';
+import emailjs from '@emailjs/browser';
 
 // Data definitions based on screenshots
 const PROJECT_TYPES = [
@@ -78,6 +79,7 @@ export default function GetQuote() {
     const fNames = formData.features.map(fid => FEATURES.find(f => f.id === fid)?.name).filter(Boolean);
     
     try {
+      // 1. Save quote to backend database
       const res = await fetch(`${API_BASE_URL}/api/public/quote`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -91,9 +93,28 @@ export default function GetQuote() {
           description: formData.description
         })
       });
-      
       if (res.ok) {
-        setIsSubmitted(true);
+        setIsSubmitted(true); // Show success screen immediately
+        
+        // 2. Send email via EmailJS (in the background)
+        emailjs.send(
+          process.env.REACT_APP_EMAILJS_SERVICE_ID,
+          process.env.REACT_APP_EMAILJS_TEMPLATE_QUOTE,
+          {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            project_type: pName,
+            estimated_cost: totalCost.toLocaleString(),
+            features: fNames.join(', ') || 'None',
+            description: formData.description || 'No description provided'
+          },
+          process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+        ).then(() => {
+          console.log('[EMAIL] Quote request email sent successfully via EmailJS');
+        }).catch((emailErr) => {
+          console.error('[EMAIL] Failed to send quote email via EmailJS:', emailErr);
+        });
       } else {
         const data = await res.json();
         setErrorMsg(data.error || 'Failed to submit quote request.');
@@ -110,12 +131,12 @@ export default function GetQuote() {
     <>
       <SEO title="Get Quote | AiTechPulze" description="Get a detailed project quote in minutes." path="/get-quote" />
 
-      <div className="min-h-screen bg-slate-50 flex flex-col md:flex-row pt-[72px]">
+      <div className="min-h-screen bg-[#060713] flex flex-col md:flex-row pt-[72px]">
         {/* Left Sidebar (Dark) */}
-        <div className="w-full md:w-[380px] lg:w-[420px] bg-[#1a1736] flex-shrink-0 flex flex-col p-8 md:p-12 min-h-[400px] md:min-h-[calc(100vh-72px)] relative overflow-hidden text-white">
+        <div className="w-full md:w-[380px] lg:w-[420px] bg-[#0d0e22] border-r border-white/10 flex-shrink-0 flex flex-col p-8 md:p-12 min-h-[400px] md:min-h-[calc(100vh-72px)] relative overflow-hidden text-white">
           <div className="absolute inset-0 pointer-events-none opacity-50">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500 rounded-full blur-[100px] opacity-20" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500 rounded-full blur-[100px] opacity-20" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px] opacity-20" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-[100px] opacity-20" />
           </div>
 
           <div className="relative z-10 flex-grow">
@@ -125,7 +146,7 @@ export default function GetQuote() {
             <h1 className="text-4xl font-extrabold tracking-tight mb-2">
               Build<br/>
               Something<br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">Amazing</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Amazing</span>
             </h1>
             <p className="text-sm text-white/60 mb-12 max-w-[280px]">
               Tell us about your project. Get a detailed quote in minutes.
@@ -137,7 +158,7 @@ export default function GetQuote() {
                 const isPast = step > s.id;
                 return (
                   <div key={s.id} className="flex items-center gap-4">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${isActive ? 'bg-[#7c3aed] text-white shadow-[0_0_15px_rgba(124,58,237,0.5)]' : isPast ? 'bg-[#7c3aed]/20 text-[#7c3aed] border border-[#7c3aed]/50' : 'bg-white/5 border border-white/10 text-white/40'}`}>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${isActive ? 'bg-cyan-500 text-slate-950 shadow-[0_0_15px_rgba(6,182,212,0.5)]' : isPast ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50' : 'bg-white/5 border border-white/10 text-white/40'}`}>
                       {isPast ? <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg> : s.id}
                     </div>
                     <span className={`text-sm font-bold ${isActive ? 'text-white' : isPast ? 'text-white/80' : 'text-white/40'}`}>
@@ -167,17 +188,17 @@ export default function GetQuote() {
         </div>
 
         {/* Right Content Area */}
-        <div className="flex-grow bg-white p-8 md:p-16 lg:p-24 overflow-y-auto min-h-[calc(100vh-72px)]">
+        <div className="flex-grow bg-[#060713] p-8 md:p-16 lg:p-24 overflow-y-auto min-h-[calc(100vh-72px)] text-white">
           <div className="max-w-2xl mx-auto">
             
             {/* Step 1: Your Info */}
             {step === 1 && (
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-                <div className="inline-block px-3 py-1 rounded bg-indigo-50 text-indigo-600 text-[10px] font-bold tracking-widest uppercase mb-4">
+                <div className="inline-block px-3 py-1 rounded bg-blue-950/50 border border-white/10 text-blue-400 text-[10px] font-bold tracking-widest uppercase mb-4">
                   STEP 1 OF 4
                 </div>
-                <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Your Details</h2>
-                <p className="text-sm text-slate-500 mb-10">We'll use this to send your quote and get in touch.</p>
+                <h2 className="text-3xl font-extrabold text-white mb-2">Your Details</h2>
+                <p className="text-sm text-slate-400 mb-10">We'll use this to send your quote and get in touch.</p>
 
                 <div className="space-y-6">
                   <div>
@@ -186,7 +207,7 @@ export default function GetQuote() {
                       type="text" 
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className="w-full bg-transparent border-b border-slate-200 py-3 text-slate-900 focus:outline-none focus:border-[#7c3aed] transition-colors"
+                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors"
                     />
                   </div>
                   <div>
@@ -195,7 +216,7 @@ export default function GetQuote() {
                       type="tel" 
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      className="w-full bg-transparent border-b border-slate-200 py-3 text-slate-900 focus:outline-none focus:border-[#7c3aed] transition-colors"
+                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors"
                     />
                   </div>
                   <div>
@@ -204,7 +225,7 @@ export default function GetQuote() {
                       type="email" 
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="w-full bg-transparent border-b border-slate-200 py-3 text-slate-900 focus:outline-none focus:border-[#7c3aed] transition-colors"
+                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors"
                     />
                   </div>
                 </div>
@@ -213,7 +234,7 @@ export default function GetQuote() {
                   <button 
                     onClick={handleNext}
                     disabled={!formData.name || !formData.phone || !formData.email}
-                    className="w-full py-4 bg-[#7c3aed] hover:bg-[#6d28d9] disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl shadow-lg shadow-indigo-500/30 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-4 bg-cyan-500 hover:bg-cyan-600 disabled:opacity-50 disabled:cursor-not-allowed text-slate-950 font-bold rounded-xl shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     Continue &rarr;
                   </button>
@@ -224,36 +245,36 @@ export default function GetQuote() {
             {/* Step 2: Project Type */}
             {step === 2 && (
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-                <div className="inline-block px-3 py-1 rounded bg-indigo-50 text-indigo-600 text-[10px] font-bold tracking-widest uppercase mb-4">
+                <div className="inline-block px-3 py-1 rounded bg-blue-950/50 border border-white/10 text-blue-400 text-[10px] font-bold tracking-widest uppercase mb-4">
                   STEP 2 OF 4
                 </div>
-                <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Project Type</h2>
-                <p className="text-sm text-slate-500 mb-10">What kind of project do you need?</p>
+                <h2 className="text-3xl font-extrabold text-white mb-2">Project Type</h2>
+                <p className="text-sm text-slate-400 mb-10">What kind of project do you need?</p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {PROJECT_TYPES.map(type => (
                     <button
                       key={type.id}
                       onClick={() => setFormData({...formData, projectTypeId: type.id})}
-                      className={`text-left p-5 rounded-2xl border transition-all ${formData.projectTypeId === type.id ? 'border-[#7c3aed] bg-indigo-50/50 shadow-[0_0_0_1px_#7c3aed]' : 'border-slate-200 bg-white hover:border-indigo-300'}`}
+                      className={`text-left p-5 rounded-2xl border transition-all cursor-pointer ${formData.projectTypeId === type.id ? 'border-cyan-400 bg-cyan-950/20 shadow-[0_0_15px_rgba(6,182,212,0.15)] text-white' : 'border-white/10 bg-[#0d0e22]/50 text-slate-300 hover:border-white/20'}`}
                     >
-                      <div className={`mb-4 ${formData.projectTypeId === type.id ? 'text-[#7c3aed]' : 'text-slate-400'}`}>
+                      <div className={`mb-4 ${formData.projectTypeId === type.id ? 'text-cyan-400' : 'text-slate-400'}`}>
                         {type.icon}
                       </div>
-                      <div className="font-bold text-slate-900 mb-1 text-sm">{type.name}</div>
-                      <div className="text-xs font-bold text-[#7c3aed]">₹{type.price.toLocaleString()}</div>
+                      <div className="font-bold mb-1 text-sm">{type.name}</div>
+                      <div className="text-xs font-bold text-cyan-400">₹{type.price.toLocaleString()}</div>
                     </button>
                   ))}
                 </div>
 
                 <div className="mt-12 flex items-center gap-4">
-                  <button onClick={handleBack} className="px-6 py-4 text-sm font-bold text-slate-500 hover:bg-slate-50 rounded-xl border border-slate-200 transition-colors">
+                  <button onClick={handleBack} className="px-6 py-4 text-sm font-bold text-slate-300 hover:bg-white/5 rounded-xl border border-white/10 transition-colors cursor-pointer">
                     &larr; Back
                   </button>
                   <button 
                     onClick={handleNext}
                     disabled={!formData.projectTypeId}
-                    className="flex-grow py-4 bg-[#7c3aed] hover:bg-[#6d28d9] disabled:opacity-50 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/30 transition-all flex items-center justify-center gap-2"
+                    className="flex-grow py-4 bg-cyan-500 hover:bg-cyan-600 disabled:opacity-50 text-slate-950 font-bold rounded-xl shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     Continue &rarr;
                   </button>
@@ -264,11 +285,11 @@ export default function GetQuote() {
             {/* Step 3: Features */}
             {step === 3 && (
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-                <div className="inline-block px-3 py-1 rounded bg-indigo-50 text-indigo-600 text-[10px] font-bold tracking-widest uppercase mb-4">
+                <div className="inline-block px-3 py-1 rounded bg-blue-950/50 border border-white/10 text-blue-400 text-[10px] font-bold tracking-widest uppercase mb-4">
                   STEP 3 OF 4
                 </div>
-                <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Add Features</h2>
-                <p className="text-sm text-slate-500 mb-8">Select optional add-ons for your project.</p>
+                <h2 className="text-3xl font-extrabold text-white mb-2">Add Features</h2>
+                <p className="text-sm text-slate-400 mb-8">Select optional add-ons for your project.</p>
 
                 <div className="flex flex-wrap gap-3 mb-10">
                   {FEATURES.map(feature => {
@@ -277,34 +298,34 @@ export default function GetQuote() {
                       <button
                         key={feature.id}
                         onClick={() => handleFeatureToggle(feature.id)}
-                        className={`px-4 py-2 rounded-full border text-xs font-bold transition-all flex items-center gap-2 ${isSelected ? 'border-[#7c3aed] bg-[#7c3aed] text-white shadow-md shadow-indigo-500/20' : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'}`}
+                        className={`px-4 py-2 rounded-full border text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${isSelected ? 'border-cyan-400 bg-cyan-500/10 text-cyan-400 shadow-md shadow-cyan-500/10' : 'border-white/10 bg-[#0d0e22]/50 text-slate-300 hover:border-white/20'}`}
                       >
-                        {feature.name} <span className={isSelected ? 'text-white/70' : 'text-slate-400'}>+₹{feature.price}</span>
+                        {feature.name} <span className={isSelected ? 'text-cyan-400' : 'text-slate-400'}>+₹{feature.price}</span>
                       </button>
                     )
                   })}
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-bold tracking-widest uppercase text-slate-900 mb-3 flex items-center gap-2">
-                    PROJECT DESCRIPTION <span className="bg-slate-100 px-2 py-0.5 rounded text-slate-500 font-medium normal-case">Optional</span>
+                  <label className="block text-[10px] font-bold tracking-widest uppercase text-slate-400 mb-3 flex items-center gap-2">
+                    PROJECT DESCRIPTION <span className="bg-[#0d0e22] px-2 py-0.5 rounded text-slate-400 font-medium normal-case border border-white/5">Optional</span>
                   </label>
                   <textarea 
                     value={formData.description}
                     onChange={(e) => setFormData({...formData, description: e.target.value})}
                     placeholder="Describe your requirements, timeline, and expected outcomes..."
                     rows={5}
-                    className="w-full bg-white border border-slate-200 rounded-2xl p-4 text-sm text-slate-900 focus:outline-none focus:border-[#7c3aed] focus:ring-1 focus:ring-[#7c3aed] transition-all resize-none shadow-sm"
+                    className="w-full bg-[#0d0e22]/50 border border-white/10 rounded-2xl p-4 text-sm text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all resize-none shadow-sm placeholder-slate-500"
                   ></textarea>
                 </div>
 
                 <div className="mt-12 flex items-center gap-4">
-                  <button onClick={handleBack} className="px-6 py-4 text-sm font-bold text-slate-500 hover:bg-slate-50 rounded-xl border border-slate-200 transition-colors">
+                  <button onClick={handleBack} className="px-6 py-4 text-sm font-bold text-slate-300 hover:bg-white/5 rounded-xl border border-white/10 transition-colors cursor-pointer">
                     &larr; Back
                   </button>
                   <button 
                     onClick={handleNext}
-                    className="flex-grow py-4 bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-bold rounded-xl shadow-lg shadow-indigo-500/30 transition-all flex items-center justify-center gap-2"
+                    className="flex-grow py-4 bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-bold rounded-xl shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     Review &rarr;
                   </button>
@@ -315,63 +336,62 @@ export default function GetQuote() {
             {/* Step 4: Review */}
             {step === 4 && (
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-                <div className="inline-block px-3 py-1 rounded bg-indigo-50 text-indigo-600 text-[10px] font-bold tracking-widest uppercase mb-4">
+                <div className="inline-block px-3 py-1 rounded bg-blue-950/50 border border-white/10 text-blue-400 text-[10px] font-bold tracking-widest uppercase mb-4">
                   STEP 4 OF 4
                 </div>
-                <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Review & Submit</h2>
-                <p className="text-sm text-slate-500 mb-10">Confirm your details before sending.</p>
+                <h2 className="text-3xl font-extrabold text-white mb-2">Review & Submit</h2>
+                <p className="text-sm text-slate-400 mb-10">Confirm your details before sending.</p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                  <div className="border border-slate-200 rounded-2xl p-5 bg-white">
-                    <div className="text-[10px] font-bold tracking-widest uppercase text-indigo-600 mb-2">CONTACT</div>
-                    <div className="text-sm font-bold text-slate-900">{formData.name}</div>
-                    <div className="text-xs text-slate-500">{formData.email}</div>
-                    <div className="text-xs text-slate-500">{formData.phone}</div>
+                  <div className="border border-white/10 rounded-2xl p-5 bg-[#0d0e22]/50">
+                    <div className="text-[10px] font-bold tracking-widest uppercase text-cyan-400 mb-2">CONTACT</div>
+                    <div className="text-sm font-bold text-white">{formData.name}</div>
+                    <div className="text-xs text-slate-400">{formData.email}</div>
+                    <div className="text-xs text-slate-400">{formData.phone}</div>
                   </div>
-                  <div className="border border-slate-200 rounded-2xl p-5 bg-white">
-                    <div className="text-[10px] font-bold tracking-widest uppercase text-indigo-600 mb-2">PROJECT</div>
-                    <div className="text-sm font-bold text-slate-900">{selectedProjectType?.name || 'Not selected'}</div>
+                  <div className="border border-white/10 rounded-2xl p-5 bg-[#0d0e22]/50">
+                    <div className="text-[10px] font-bold tracking-widest uppercase text-cyan-400 mb-2">PROJECT</div>
+                    <div className="text-sm font-bold text-white">{selectedProjectType?.name || 'Not selected'}</div>
                     {formData.features.length > 0 && (
-                      <div className="text-xs text-slate-500 mt-1">
+                      <div className="text-xs text-slate-400 mt-1">
                         + {formData.features.length} add-ons selected
                       </div>
                     )}
                   </div>
                 </div>
 
-                <div className="border border-slate-200 rounded-2xl p-5 bg-white mb-6">
-                  <div className="text-[10px] font-bold tracking-widest uppercase text-indigo-600 mb-2">DESCRIPTION</div>
-                  <div className="text-sm text-slate-600 whitespace-pre-wrap italic">
+                <div className="border border-white/10 rounded-2xl p-5 bg-[#0d0e22]/50 mb-6">
+                  <div className="text-[10px] font-bold tracking-widest uppercase text-cyan-400 mb-2">DESCRIPTION</div>
+                  <div className="text-sm text-slate-300 whitespace-pre-wrap italic">
                     {formData.description || 'Not provided'}
                   </div>
                 </div>
 
-                <div className="bg-slate-100 rounded-2xl p-6 flex items-center justify-between mb-12">
-                  <div className="text-sm font-bold text-slate-700">Total Estimate</div>
-                  <div className="text-2xl font-extrabold text-[#7c3aed]">₹{totalCost.toLocaleString()}</div>
+                <div className="bg-[#0d0e22] border border-white/10 rounded-2xl p-6 flex items-center justify-between mb-12">
+                  <div className="text-sm font-bold text-slate-300">Total Estimate</div>
+                  <div className="text-2xl font-extrabold text-cyan-400">₹{totalCost.toLocaleString()}</div>
                 </div>
 
                 {errorMsg && (
-                  <div className="bg-red-50 border border-red-200 text-red-600 rounded-xl px-4 py-3 text-xs font-semibold mb-6">
+                  <div className="bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl px-4 py-3 text-xs font-semibold mb-6">
                     ⚠️ {errorMsg}
                   </div>
                 )}
 
                 <div className="flex items-center gap-4">
-                  <button onClick={handleBack} disabled={submitting} className="px-6 py-4 text-sm font-bold text-slate-500 hover:bg-slate-50 rounded-xl border border-slate-200 transition-colors disabled:opacity-50">
+                  <button onClick={handleBack} disabled={submitting} className="px-6 py-4 text-sm font-bold text-slate-300 hover:bg-white/5 rounded-xl border border-white/10 transition-colors disabled:opacity-50 cursor-pointer">
                     &larr; Back
                   </button>
                   <button 
                     onClick={handleSubmit}
                     disabled={submitting}
-                    className="flex-grow py-4 bg-gradient-to-r from-[#7c3aed] to-indigo-500 hover:from-[#6d28d9] hover:to-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/30 transition-all flex items-center justify-center gap-2 text-lg disabled:opacity-50 cursor-pointer"
+                    className="flex-grow py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:opacity-95 text-slate-950 font-bold rounded-xl shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center gap-2 text-lg disabled:opacity-50 cursor-pointer"
                   >
                     {submitting ? 'Submitting...' : 'Submit Request 🚀'}
                   </button>
                 </div>
               </motion.div>
             )}
-
           </div>
         </div>
       </div>

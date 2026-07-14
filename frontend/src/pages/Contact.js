@@ -28,64 +28,64 @@ export default function Contact() {
       <SEO title="Contact | AiTechPulze" description="Get in touch with AiTechPulze for enterprise products, technology services, or academic projects." path="/contact" />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-12 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none opacity-40">
-          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-50 rounded-full blur-[80px]" />
-          <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-indigo-50 rounded-full blur-[80px]" />
+      <section className="pt-32 pb-12 bg-[#060713] relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-20">
+          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-900 rounded-full blur-[100px]" />
+          <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-indigo-900 rounded-full blur-[100px]" />
         </div>
 
         <div className="container mx-auto px-6 max-w-5xl text-center relative z-10">
           <motion.div {...fadeUp(0)}>
-            <div className="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-bold tracking-widest uppercase mb-6 border border-blue-100 shadow-sm">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-blue-950/40 text-blue-400 text-[10px] font-bold tracking-widest uppercase mb-6 border border-blue-900/30 shadow-sm">
               CONTACT US
             </div>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-              Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Talk Business</span>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+              Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Talk Business</span>
             </h1>
-            <p className="text-sm md:text-base text-slate-500 max-w-2xl mx-auto font-medium mb-12">
+            <p className="text-sm md:text-base text-slate-400 max-w-2xl mx-auto font-medium mb-12">
               Whether you're a business owner, a startup founder, or a student — reach out and we'll respond fast with a clear plan and honest pricing.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <motion.div {...fadeUp(0.1)} className="bg-white rounded-3xl p-8 text-left shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-slate-100">
-              <div className="text-[9px] font-bold tracking-widest uppercase text-emerald-600 mb-4">PREFERRED</div>
-              <div className="flex items-center gap-3 mb-3 text-slate-900">
-                {Icons.chat}
+            <motion.div {...fadeUp(0.1)} className="bg-[#0d0e22]/50 rounded-3xl p-8 text-left border border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.3)]">
+              <div className="text-[9px] font-bold tracking-widest uppercase text-emerald-400 mb-4">PREFERRED</div>
+              <div className="flex items-center gap-3 mb-3 text-white">
+                <span className="text-emerald-400">{Icons.chat}</span>
                 <h3 className="text-lg font-bold">WhatsApp</h3>
               </div>
-              <p className="text-xs text-slate-500 leading-relaxed mb-6">
+              <p className="text-xs text-slate-400 leading-relaxed mb-6">
                 Instant chat with our team for immediate project discussion and quotes.
               </p>
-              <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-emerald-600 hover:text-emerald-700 transition-colors">
+              <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors">
                 Open WhatsApp &rarr;
               </a>
             </motion.div>
 
-            <motion.div {...fadeUp(0.2)} className="bg-white rounded-3xl p-8 text-left shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-slate-100">
-              <div className="text-[9px] font-bold tracking-widest uppercase text-blue-600 mb-4">OFFICIAL</div>
-              <div className="flex items-center gap-3 mb-3 text-slate-900">
-                {Icons.mail}
+            <motion.div {...fadeUp(0.2)} className="bg-[#0d0e22]/50 rounded-3xl p-8 text-left border border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.3)]">
+              <div className="text-[9px] font-bold tracking-widest uppercase text-blue-400 mb-4">OFFICIAL</div>
+              <div className="flex items-center gap-3 mb-3 text-white">
+                <span className="text-blue-400">{Icons.mail}</span>
                 <h3 className="text-lg font-bold">Email</h3>
               </div>
-              <p className="text-xs text-slate-500 leading-relaxed mb-6">
+              <p className="text-xs text-slate-400 leading-relaxed mb-6">
                 Send your requirements and attachments for a formal quotation.
               </p>
-              <a href={COMPANY.mailto} className="text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors">
+              <a href={COMPANY.mailto} className="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
                 {COMPANY.email}
               </a>
             </motion.div>
 
-            <motion.div {...fadeUp(0.3)} className="bg-white rounded-3xl p-8 text-left shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-slate-100">
-              <div className="text-[9px] font-bold tracking-widest uppercase text-indigo-600 mb-4">DIRECT</div>
-              <div className="flex items-center gap-3 mb-3 text-slate-900">
-                {Icons.phone}
+            <motion.div {...fadeUp(0.3)} className="bg-[#0d0e22]/50 rounded-3xl p-8 text-left border border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.3)]">
+              <div className="text-[9px] font-bold tracking-widest uppercase text-cyan-400 mb-4">DIRECT</div>
+              <div className="flex items-center gap-3 mb-3 text-white">
+                <span className="text-cyan-400">{Icons.phone}</span>
                 <h3 className="text-lg font-bold">Call Us</h3>
               </div>
-              <p className="text-xs text-slate-500 leading-relaxed mb-6">
+              <p className="text-xs text-slate-400 leading-relaxed mb-6">
                 Speak directly for urgent timelines and immediate project planning.
               </p>
-              <a href={COMPANY.tel} className="text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors">
+              <a href={COMPANY.tel} className="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
                 {COMPANY.phone}
               </a>
             </motion.div>
@@ -94,26 +94,26 @@ export default function Contact() {
       </section>
 
       {/* Quick Response Promise */}
-      <section className="py-6 bg-white">
+      <section className="py-6 bg-[#060713]">
         <div className="container mx-auto px-6 max-w-5xl">
-          <motion.div {...fadeUp(0.4)} className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-            <h3 className="text-sm font-bold text-slate-900 mb-6 px-2">Quick Response Promise</h3>
+          <motion.div {...fadeUp(0.4)} className="bg-[#0d0e22]/50 rounded-2xl p-6 border border-white/10">
+            <h3 className="text-sm font-bold text-white mb-6 px-2">Quick Response Promise</h3>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 px-2">
               <div className="flex items-start gap-3">
-                <div className="mt-0.5 text-slate-700">{Icons.lightning}</div>
-                <p className="text-[11px] text-slate-500 leading-relaxed font-medium">Fast first response for all new project requests</p>
+                <div className="mt-0.5 text-cyan-400">{Icons.lightning}</div>
+                <p className="text-[11px] text-slate-400 leading-relaxed font-medium">Fast first response for all new project requests</p>
               </div>
               <div className="flex items-start gap-3">
-                <div className="mt-0.5 text-slate-700">{Icons.dollar}</div>
-                <p className="text-[11px] text-slate-500 leading-relaxed font-medium">Clear pricing estimate based on your project scope</p>
+                <div className="mt-0.5 text-cyan-400">{Icons.dollar}</div>
+                <p className="text-[11px] text-slate-400 leading-relaxed font-medium">Clear pricing estimate based on your project scope</p>
               </div>
               <div className="flex items-start gap-3">
-                <div className="mt-0.5 text-slate-700">{Icons.target}</div>
-                <p className="text-[11px] text-slate-500 leading-relaxed font-medium">Direct support from planning to final delivery</p>
+                <div className="mt-0.5 text-cyan-400">{Icons.target}</div>
+                <p className="text-[11px] text-slate-400 leading-relaxed font-medium">Direct support from planning to final delivery</p>
               </div>
               <div className="flex items-start gap-3">
-                <div className="mt-0.5 text-slate-700">{Icons.device}</div>
-                <p className="text-[11px] text-slate-500 leading-relaxed font-medium">Flexible communication via WhatsApp, call, or email</p>
+                <div className="mt-0.5 text-cyan-400">{Icons.device}</div>
+                <p className="text-[11px] text-slate-400 leading-relaxed font-medium">Flexible communication via WhatsApp, call, or email</p>
               </div>
             </div>
           </motion.div>
@@ -121,24 +121,24 @@ export default function Contact() {
       </section>
 
       {/* Audiences */}
-      <section className="py-6 bg-white mb-12">
+      <section className="py-6 bg-[#060713] mb-12">
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <motion.div {...fadeUp(0.5)} className="bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.02)] text-center">
-              <h3 className="text-sm font-bold text-slate-900 mb-3">For Businesses</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
+            <motion.div {...fadeUp(0.5)} className="bg-[#0d0e22]/50 rounded-3xl p-8 border border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.3)] text-center">
+              <h3 className="text-sm font-bold text-white mb-3">For Businesses</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
                 Discuss enterprise product requirements, custom software, dashboards, and digital transformation plans.
               </p>
             </motion.div>
-            <motion.div {...fadeUp(0.6)} className="bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.02)] text-center">
-              <h3 className="text-sm font-bold text-slate-900 mb-3">For Startups</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
+            <motion.div {...fadeUp(0.6)} className="bg-[#0d0e22]/50 rounded-3xl p-8 border border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.3)] text-center">
+              <h3 className="text-sm font-bold text-white mb-3">For Startups</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
                 Plan your MVP scope, release priorities, SaaS architecture, and development roadmap.
               </p>
             </motion.div>
-            <motion.div {...fadeUp(0.7)} className="bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.02)] text-center">
-              <h3 className="text-sm font-bold text-slate-900 mb-3">For Students</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
+            <motion.div {...fadeUp(0.7)} className="bg-[#0d0e22]/50 rounded-3xl p-8 border border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.3)] text-center">
+              <h3 className="text-sm font-bold text-white mb-3">For Students</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
                 Get guidance on final year projects, IEEE papers, research support, and academic innovation.
               </p>
             </motion.div>
@@ -147,22 +147,22 @@ export default function Contact() {
       </section>
 
       {/* CTA Section */}
-      <section className="pb-24 bg-white relative">
+      <section className="pb-24 bg-[#060713] relative border-t border-white/5 pt-24">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <motion.div 
             {...fadeUp(0)}
-            className="p-12 md:p-16 rounded-[2.5rem] relative overflow-hidden bg-gradient-to-br from-indigo-50/80 via-purple-50/80 to-white shadow-[0_20px_60px_rgba(37,99,235,0.05)] border border-indigo-100/50"
+            className="p-12 md:p-16 rounded-[2.5rem] relative overflow-hidden bg-gradient-to-br from-[#0d0e22] to-[#060713] shadow-[0_20px_60px_rgba(0,0,0,0.35)] border border-white/10"
           >
-            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4 tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4 tracking-tight">
               Ready to Submit Your Requirement?
             </h2>
-            <p className="text-slate-500 text-sm md:text-base font-medium mb-8 max-w-md mx-auto">
+            <p className="text-slate-400 text-sm md:text-base font-medium mb-8 max-w-md mx-auto">
               Use the quote form to send complete project details — optionally include a PDF document.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link 
                 to="/get-quote" 
-                className="inline-flex items-center justify-center px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-bold rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:-translate-y-0.5 transition-all"
+                className="inline-flex items-center justify-center px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-bold rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:-translate-y-0.5 transition-all cursor-pointer"
               >
                 Get Free Quote &rarr;
               </Link>
@@ -170,7 +170,7 @@ export default function Contact() {
                 href={COMPANY.whatsapp} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-flex items-center justify-center px-6 py-3.5 bg-white text-slate-700 text-sm font-bold rounded-xl border border-slate-200 shadow-sm hover:border-slate-300 hover:bg-slate-50 transition-all"
+                className="inline-flex items-center justify-center px-6 py-3.5 bg-white/5 text-white text-sm font-bold rounded-xl border border-white/10 shadow-sm hover:bg-white/10 transition-all cursor-pointer"
               >
                 {Icons.whatsapp}
                 WhatsApp Now

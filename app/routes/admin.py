@@ -129,12 +129,12 @@ def approve_application(lead_id):
         lead.admin_notes = f'Approved. Student ID: {enrollment_id}, Username: {username}'
         db.session.commit()
 
-        # Send credentials via email
-        try:
-            from app.utils.email import send_credentials_email
-            send_credentials_email(lead.full_name, lead.email, enrollment_id, username, raw_password, domain, plan)
-        except Exception as e:
-            print(f'[EMAIL] Failed: {e}')
+        # Send credentials via email (disabled, handled by frontend EmailJS)
+        # try:
+        #     from app.utils.email import send_credentials_email
+        #     send_credentials_email(lead.full_name, lead.email, enrollment_id, username, raw_password, domain, plan)
+        # except Exception as e:
+        #     print(f'[EMAIL] Failed: {e}')
 
         return jsonify({'message': 'Approved', 'enrollment_id': enrollment_id, 'username': username, 'password': raw_password})
     except Exception as e:

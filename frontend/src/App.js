@@ -27,6 +27,8 @@ import PortalLogin from './pages/portal/PortalLogin';
 import AdminDashboard from './pages/portal/AdminDashboard';
 import MentorDashboard from './pages/portal/MentorDashboard';
 import StudentDashboard from './pages/portal/StudentDashboard';
+import LiveChat from './components/LiveChat';
+
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -97,6 +99,7 @@ export default function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       {!isPortalRoute && <Footer />}
+      {!isPortalRoute && <LiveChat />}
     </>
   );
 }

@@ -51,21 +51,21 @@ export default function AcademicHub() {
       <SEO title="Academic Innovation Hub" description="IEEE and Final Year projects for students built by AiTechPulze." path="/academic-hub" />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none opacity-40">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-50 rounded-full blur-[80px]" />
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-teal-50 rounded-full blur-[80px]" />
+      <section className="pt-32 pb-16 bg-[#060713] relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-20">
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-950 rounded-full blur-[100px]" />
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-teal-950 rounded-full blur-[100px]" />
         </div>
 
         <div className="container mx-auto px-6 max-w-5xl text-center relative z-10">
           <motion.div {...fadeUp(0)}>
-            <div className="inline-block px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-bold tracking-widest uppercase mb-6 border border-emerald-100 shadow-sm">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-emerald-950/40 text-emerald-400 text-[10px] font-bold tracking-widest uppercase mb-6 border border-emerald-900/30 shadow-sm">
               ACADEMIC INNOVATION HUB
             </div>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
-              Empowering <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">Student Innovation</span>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6">
+              Empowering <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Student Innovation</span>
             </h1>
-            <p className="text-sm md:text-base text-slate-500 max-w-3xl mx-auto leading-relaxed font-medium">
+            <p className="text-sm md:text-base text-slate-400 max-w-3xl mx-auto leading-relaxed font-medium">
               From IEEE research projects to AI-powered final year projects — we help students build impressive, grade-worthy projects with complete documentation and deployment support.
             </p>
           </motion.div>
@@ -73,21 +73,21 @@ export default function AcademicHub() {
       </section>
 
       {/* Stats Row */}
-      <section className="py-8 bg-white relative z-10 -mt-8">
+      <section className="py-8 bg-[#060713] relative z-10 -mt-8">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {STATS.map((s, i) => (
               <motion.div 
                 key={s.title} 
                 {...fadeUp(i * 0.1)}
-                className="bg-white rounded-[2rem] p-8 text-center flex flex-col items-center shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-slate-100"
+                className="bg-[#0d0e22]/50 rounded-[2rem] p-8 text-center flex flex-col items-center border border-white/10"
               >
-                <div className="text-slate-700 mb-4 opacity-80">
+                <div className="text-slate-400 mb-4 opacity-80">
                   {s.icon}
                 </div>
-                <div className="text-3xl font-extrabold text-teal-600 mb-2">{s.value}</div>
-                <h3 className="text-sm font-bold text-slate-900 mb-3">{s.title}</h3>
-                <p className="text-xs text-slate-500 leading-relaxed max-w-[220px]">
+                <div className="text-3xl font-extrabold text-teal-400 mb-2">{s.value}</div>
+                <h3 className="text-sm font-bold text-white mb-3">{s.title}</h3>
+                <p className="text-xs text-slate-400 leading-relaxed max-w-[220px]">
                   {s.desc}
                 </p>
               </motion.div>
@@ -97,15 +97,15 @@ export default function AcademicHub() {
       </section>
 
       {/* Showcase Section */}
-      <section className="py-20 bg-slate-50/50">
+      <section className="py-20 bg-[#060713]">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="text-center mb-12">
             <motion.div {...fadeUp(0)}>
-              <div className="inline-block px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-bold tracking-widest uppercase mb-4 border border-emerald-100 shadow-sm">
+              <div className="inline-block px-4 py-1.5 rounded-full bg-emerald-950/40 text-emerald-400 text-[10px] font-bold tracking-widest uppercase mb-4 border border-emerald-900/30 shadow-sm">
                 PROJECT SHOWCASE
               </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-8">
-                Explore <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">Academic Projects</span>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-8">
+                Explore <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Academic Projects</span>
               </h2>
               
               {/* Filters */}
@@ -114,7 +114,7 @@ export default function AcademicHub() {
                   <button 
                     key={f}
                     onClick={() => setFilter(f)}
-                    className={`px-5 py-2 rounded-full text-xs font-bold transition-all border ${filter === f ? 'bg-teal-500 text-white border-teal-500 shadow-lg shadow-teal-500/20' : 'bg-white text-slate-600 border-slate-200 hover:border-teal-300'}`}
+                    className={`px-5 py-2 rounded-full text-xs font-bold transition-all border cursor-pointer ${filter === f ? 'bg-teal-500 text-slate-950 border-teal-500 shadow-lg shadow-teal-500/20' : 'bg-white/5 text-slate-300 border-white/10 hover:border-teal-400'}`}
                   >
                     {f}
                   </button>
@@ -133,28 +133,28 @@ export default function AcademicHub() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-white rounded-[2rem] p-6 shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-slate-100 flex flex-col h-full hover:shadow-[0_20px_60px_rgba(20,184,166,0.08)] transition-shadow duration-300"
+                  className="bg-[#0d0e22]/50 rounded-[2rem] p-6 border border-white/10 flex flex-col h-full hover:border-teal-500/30 hover:shadow-[0_20px_60px_rgba(20,184,166,0.15)] transition-all duration-300"
                 >
-                  <div className="h-48 mb-6 bg-slate-50 rounded-2xl overflow-hidden flex items-center justify-center p-4">
+                  <div className="h-48 mb-6 bg-slate-900 rounded-2xl overflow-hidden flex items-center justify-center p-4">
                     <img src={p.image} alt={p.title} className="max-w-full max-h-full object-contain" />
                   </div>
-                  <div className="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-bold tracking-widest uppercase mb-4 w-fit">
+                  <div className="inline-block px-3 py-1 rounded-full bg-emerald-950/40 text-emerald-400 text-[10px] font-bold tracking-widest uppercase mb-4 w-fit border border-emerald-900/30">
                     {p.category}
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-3">{p.title}</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed mb-6 flex-grow">
+                  <h3 className="text-lg font-bold text-white mb-3">{p.title}</h3>
+                  <p className="text-xs text-slate-400 leading-relaxed mb-6 flex-grow">
                     {p.description}
                   </p>
                   
                   <div className="flex flex-wrap gap-2 mb-6">
                     {p.tech.map(t => (
-                      <span key={t} className="px-3 py-1 bg-blue-50 text-blue-600 text-[10px] font-bold rounded-full border border-blue-100">
+                      <span key={t} className="px-3 py-1 bg-blue-950/40 text-blue-400 text-[10px] font-bold rounded-full border border-blue-900/30">
                         {t}
                       </span>
                     ))}
                   </div>
                   
-                  <a href={p.demo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-5 py-2.5 bg-white text-slate-700 text-xs font-bold rounded-xl border border-slate-200 shadow-sm hover:border-slate-300 hover:bg-slate-50 transition-all w-fit">
+                  <a href={p.demo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-5 py-2.5 bg-white/5 text-white text-xs font-bold rounded-xl border border-white/10 shadow-sm hover:bg-white/10 transition-all w-fit cursor-pointer">
                     View Demo &rarr;
                   </a>
                 </motion.div>
@@ -165,20 +165,20 @@ export default function AcademicHub() {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-[#060713] border-t border-white/5">
         <div className="container mx-auto px-6 max-w-5xl text-center">
           <motion.div {...fadeUp(0)}>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-16">
-              How We Help <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">Students</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-16">
+              How We Help <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Students</span>
             </h2>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {STEPS.map((step, i) => (
               <motion.div key={step.num} {...fadeUp(i * 0.1)} className="flex flex-col items-center">
-                <div className="text-2xl font-extrabold text-indigo-600 mb-4">{step.num}</div>
-                <h3 className="text-sm font-bold text-slate-900 mb-3">{step.title}</h3>
-                <p className="text-xs text-slate-500 leading-relaxed max-w-[200px]">
+                <div className="text-2xl font-extrabold text-teal-400 mb-4">{step.num}</div>
+                <h3 className="text-sm font-bold text-white mb-3">{step.title}</h3>
+                <p className="text-xs text-slate-400 leading-relaxed max-w-[200px]">
                   {step.desc}
                 </p>
               </motion.div>
@@ -188,13 +188,13 @@ export default function AcademicHub() {
       </section>
 
       {/* CTA Section */}
-      <section className="pb-24 bg-white relative">
+      <section className="pb-24 bg-[#060713] relative border-t border-white/5 pt-24">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <motion.div {...fadeUp(0)}>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight">
               Need Your Project Done Right?
             </h2>
-            <p className="text-slate-500 text-sm font-medium mb-10 max-w-lg mx-auto">
+            <p className="text-slate-400 text-sm font-medium mb-10 max-w-lg mx-auto">
               Chat with us now — tell us your domain, deadline, and we'll take it from there.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
@@ -202,14 +202,14 @@ export default function AcademicHub() {
                 href={COMPANY.whatsapp} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-flex items-center justify-center px-6 py-3.5 bg-[#4f46e5] text-white text-sm font-bold rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:bg-[#4338ca] hover:-translate-y-0.5 transition-all"
+                className="inline-flex items-center justify-center px-6 py-3.5 bg-[#4f46e5] text-white text-sm font-bold rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:bg-[#4338ca] hover:-translate-y-0.5 transition-all cursor-pointer"
               >
                 {Icons.whatsapp}
                 WhatsApp for Project Help
               </a>
               <Link 
                 to="/get-quote" 
-                className="inline-flex items-center justify-center px-6 py-3.5 bg-white text-slate-700 text-sm font-bold rounded-xl border border-slate-200 shadow-sm hover:border-slate-300 hover:bg-slate-50 transition-all"
+                className="inline-flex items-center justify-center px-6 py-3.5 bg-white/5 text-white text-sm font-bold rounded-xl border border-white/10 shadow-sm hover:bg-white/10 transition-all cursor-pointer"
               >
                 Get a Quote
               </Link>

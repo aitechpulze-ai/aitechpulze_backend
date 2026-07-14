@@ -1,18 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const LOADING_STEPS = [
+  'SECURE PROTOCOL INTERFACE',
+  'RESOLVING CORE DATAFRAMES',
+  'SYNCHRONIZING GRAPHICS DRIVER',
+  'COMPILING SYSTEMS...',
+  'INTERFACE STABLE'
+];
+
 export default function PremiumLoader({ onComplete }) {
-  const [isVisible, setIsVisible] = useState(true);
-  
+  const [isVisible, setIsVisible] = useState(false);
+  const [stepIndex, setStepIndex] = useState(0);
+
   useEffect(() => {
-    // Artificial delay for loading demonstration
-    const timer = setTimeout(() => {
+    const hasRun = sessionStorage.getItem('aitechpulze_loader_has_run');
+    if (hasRun) {
       setIsVisible(false);
-      if (onComplete) {
-        setTimeout(onComplete, 800); // wait for exit animation
-      }
-    }, 2500);
-    return () => clearTimeout(timer);
+      if (onComplete) onComplete();
+    } else {
+      setIsVisible(true);
+      
+      // Cycle through status messages
+      const interval = setInterval(() => {
+        setStepIndex((prev) => (prev < LOADING_STEPS.length - 1 ? prev + 1 : prev));
+      }, 500);
+
+      // Finish loading
+      const timer = setTimeout(() => {
+        sessionStorage.setItem('aitechpulze_loader_has_run', 'true');
+        setIsVisible(false);
+        if (onComplete) {
+          setTimeout(onComplete, 800);
+        }
+      }, 2800);
+
+      return () => {
+        clearInterval(interval);
+        clearTimeout(timer);
+      };
+    }
   }, [onComplete]);
 
   return (
@@ -20,60 +47,81 @@ export default function PremiumLoader({ onComplete }) {
       {isVisible && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
-          className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-white overflow-hidden"
+          exit={{ opacity: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }}
+          className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#05060f] overflow-hidden"
         >
-          {/* Noise overlay */}
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay"
-               style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 512 512\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.75\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")' }} 
+          {/* Cyber grid background */}
+          <div 
+            className="absolute inset-0 opacity-[0.05] pointer-events-none"
+            style={{ 
+              backgroundImage: 'linear-gradient(rgba(18, 113, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(18, 113, 255, 0.1) 1px, transparent 1px)',
+              backgroundSize: '30px 30px'
+            }} 
           />
 
-          {/* Glowing background blob */}
+          {/* Futuristic laser scanning line */}
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1.2, opacity: 0.15 }}
-            transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
-            className="absolute w-96 h-96 bg-blue-500 rounded-full blur-[100px]"
+            initial={{ top: '-10%' }}
+            animate={{ top: '110%' }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: 'linear' }}
+            className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_15px_rgba(34,211,238,0.8)] z-10"
           />
 
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative flex flex-col items-center gap-6"
-          >
-            {/* Logo Morph Placeholder - We use a sophisticated glowing ring for now */}
-            <div className="relative w-16 h-16 flex items-center justify-center">
+          {/* Glowing central node */}
+          <div className="absolute w-[400px] h-[400px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none" />
+
+          <div className="relative flex flex-col items-center gap-8">
+            {/* Multi-layered orbital HUD ring */}
+            <div className="relative w-28 h-28 flex items-center justify-center">
+              {/* Outer dashed tech circle */}
               <motion.div
                 animate={{ rotate: 360 }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-xl border border-blue-500/20 bg-gradient-to-tr from-blue-600/10 to-blue-400/10 shadow-[0_0_30px_rgba(37,99,235,0.2)]"
+                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full border border-dashed border-blue-500/30"
               />
+              {/* Mid ring */}
               <motion.div
                 animate={{ rotate: -360 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-2 rounded-lg border-t-2 border-r-2 border-blue-600"
+                transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-3 rounded-full border-2 border-transparent border-t-blue-500 border-b-cyan-400"
               />
-              <span className="font-bold text-xl tracking-tighter text-slate-800 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-500">
+              {/* Inner ring */}
+              <motion.div
+                animate={{ rotate: 180 }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-6 rounded-full border border-dashed border-cyan-400/40"
+              />
+              {/* Glowing center symbol */}
+              <div className="z-10 text-white font-black text-2xl tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400">
                 A
-              </span>
+              </div>
             </div>
 
-            <div className="flex flex-col items-center gap-2">
-              <h1 className="text-sm font-bold tracking-[0.2em] text-slate-400 uppercase">
-                Initializing Environment
-              </h1>
-              {/* Premium Progress Bar */}
-              <div className="w-48 h-1 bg-slate-100 rounded-full overflow-hidden">
+            {/* High-Tech status info */}
+            <div className="flex flex-col items-center gap-3 text-center">
+              <div className="text-[10px] font-mono tracking-[0.3em] text-slate-500 uppercase">
+                SYSTEM CORE ONLINE
+              </div>
+              <motion.div 
+                key={stepIndex}
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-xs font-mono font-bold tracking-[0.15em] text-cyan-400 uppercase h-4"
+              >
+                &gt; {LOADING_STEPS[stepIndex]}
+              </motion.div>
+              
+              {/* Minimal bar loading indicator */}
+              <div className="w-48 h-[3px] bg-white/5 rounded-full overflow-hidden border border-white/5 mt-2">
                 <motion.div
                   initial={{ width: '0%' }}
                   animate={{ width: '100%' }}
-                  transition={{ duration: 2, ease: "easeInOut" }}
-                  className="h-full bg-gradient-to-r from-blue-600 via-blue-400 to-cyan-400 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.5)]"
+                  transition={{ duration: 2.5, ease: "easeInOut" }}
+                  className="h-full bg-gradient-to-r from-blue-500 via-cyan-400 to-indigo-500 rounded-full"
                 />
               </div>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

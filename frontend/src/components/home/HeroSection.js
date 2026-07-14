@@ -30,28 +30,29 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#060713] pt-20">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Mesh Gradient / Aurora */}
-        <div className="absolute -top-40 -right-40 w-[800px] h-[800px] bg-blue-100 rounded-full mix-blend-multiply filter blur-[120px] opacity-70 animate-blob" />
-        <div className="absolute top-40 -left-40 w-[600px] h-[600px] bg-blue-50 rounded-full mix-blend-multiply filter blur-[100px] opacity-70 animate-blob animation-delay-2000" />
-        <div className="absolute -bottom-40 left-20 w-[700px] h-[700px] bg-sky-100 rounded-full mix-blend-multiply filter blur-[120px] opacity-70 animate-blob animation-delay-4000" />
+        <div className="absolute -top-40 -right-40 w-[800px] h-[800px] bg-blue-600/10 rounded-full filter blur-[120px] opacity-70 animate-blob" />
+        <div className="absolute top-40 -left-40 w-[600px] h-[600px] bg-purple-600/10 rounded-full filter blur-[100px] opacity-70 animate-blob animation-delay-2000" />
+        <div className="absolute -bottom-40 left-20 w-[700px] h-[700px] bg-cyan-600/10 rounded-full filter blur-[120px] opacity-70 animate-blob animation-delay-4000" />
         
         {/* Noise Overlay */}
-        <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay"
+        <div className="absolute inset-0 opacity-[0.015] mix-blend-overlay"
              style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 512 512\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.75\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")' }} />
         
         {/* Animated Grid */}
         <div className="absolute inset-0" 
              style={{
-               backgroundImage: `linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px)`,
-               backgroundSize: '40px 40px',
-               perspective: '1000px',
-               transform: 'rotateX(60deg) scale(2) translateY(-100px)',
-               transformOrigin: 'top center',
+                backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)`,
+                backgroundSize: '40px 40px',
+                perspective: '1000px',
+                transform: 'rotateX(60deg) scale(2) translateY(-100px)',
+                transformOrigin: 'top center',
              }} 
         />
+
       </div>
 
       <div className="container mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center">
@@ -62,7 +63,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-semibold mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0d0e22] border border-white/10 text-blue-400 text-sm font-semibold mb-6">
               <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
               AiTechPulze 3.0 is Live
             </div>
@@ -72,11 +73,11 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.1] mb-4"
+            className="text-5xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1] mb-4"
           >
             Architecting <br className="hidden lg:block" />
             Intelligent <br className="hidden lg:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400">
               Digital Experiences
             </span>
           </motion.h1>
@@ -90,7 +91,7 @@ export default function HeroSection() {
                 animate={{ y: 0, opacity: 1, rotateX: 0 }}
                 exit={{ y: -40, opacity: 0, rotateX: 90 }}
                 transition={{ duration: 0.5, ease: "anticipate" }}
-                className="text-2xl lg:text-4xl font-bold text-blue-600"
+                className="text-2xl lg:text-4xl font-bold text-cyan-400"
                 style={{ transformOrigin: "bottom center" }}
               >
                 {ROTATING_TEXTS[textIndex]}
@@ -102,7 +103,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="text-lg text-slate-500 mb-10 max-w-xl leading-relaxed"
+            className="text-lg text-slate-400 mb-10 max-w-xl leading-relaxed"
           >
             We transform complex business challenges into elegant, AI-driven digital 
             solutions. Experience the pinnacle of performance, design, and intelligent automation.
@@ -114,120 +115,127 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
           >
-            <button className="premium-btn group w-full sm:w-auto">
+            <button className="premium-btn group w-full sm:w-auto cursor-pointer">
               <span>Build Your Future</span>
               <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </button>
-            <button className="premium-btn premium-btn-secondary w-full sm:w-auto">
+            <button className="premium-btn premium-btn-secondary w-full sm:w-auto cursor-pointer">
               Book Strategy Call
             </button>
           </motion.div>
         </div>
 
         {/* Right AI Visualization */}
-        <div className="w-full lg:w-1/2 h-[500px] lg:h-[700px] relative mt-16 lg:mt-0 perspective-1000">
-          <motion.div 
-            className="absolute inset-0 w-full h-full"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            style={{ transformStyle: 'preserve-3d' }}
-          >
-            {/* Ambient rings behind the mockups */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[38rem] h-[38rem] rounded-full border border-blue-200/35" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] rounded-full border border-cyan-200/35" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20rem] h-[20rem] rounded-full border border-blue-200/25" />
+        <div className="w-full lg:w-1/2 h-[550px] lg:h-[700px] relative mt-16 lg:mt-0 flex items-center justify-center">
+          <div className="relative w-full max-w-[540px] aspect-square flex items-center justify-center">
+            {/* Circle 1: Outer Rotating Cyber Ring */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 55, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-[-16px] rounded-full border border-dashed border-blue-500/20"
+            />
 
-            {/* Laptop Mockup */}
-            <motion.div 
-              className="absolute right-2 top-32 w-[640px] max-w-[92%] rounded-[2rem] bg-slate-900 shadow-[0_30px_90px_rgba(15,23,42,0.22)] border border-slate-800 p-3"
-              whileHover={laptopHover}
-              whileTap={{ scale: 0.995 }}
-              transition={{ type: "spring", stiffness: 120, damping: 18 }}
+            {/* Circle 3: Mid Hexagonal Grid Ring */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 75, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-12 rounded-full border border-double border-cyan-500/20"
+              style={{
+                backgroundImage: `radial-gradient(rgba(6, 182, 212, 0.05) 2px, transparent 2px)`,
+                backgroundSize: '16px 16px'
+              }}
+            />
+
+            {/* Circle 4: Inner Rotating Tech Gear */}
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-24 rounded-full border-2 border-transparent border-t-purple-500/40 border-b-blue-500/40"
+            />
+
+            {/* Glowing Central Cyber Core */}
+            <motion.div
+              animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute w-40 h-40 bg-gradient-to-tr from-blue-600 via-cyan-400 to-indigo-600 rounded-full blur-[30px] opacity-80 flex items-center justify-center shadow-[0_0_80px_rgba(6,182,212,0.6)]"
+            />
+
+            <div className="absolute w-32 h-32 rounded-full bg-white p-4 border-[8px] border-[#05060f] flex items-center justify-center z-10 shadow-[0_0_35px_rgba(6,182,212,0.4)]">
+              <img
+                src="/images/favicon.png"
+                alt="AiTechPulze Brand Icon"
+                className="w-full h-full object-contain rounded-full"
+              />
+            </div>
+
+            {/* Futuristic Telemetry Card 1 - Top Left */}
+            <motion.div
+              initial={{ x: -50, y: -50, opacity: 0 }}
+              animate={{ x: 0, y: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              whileHover={{ scale: 1.05 }}
+              className="absolute top-2 left-2 p-4 bg-[#0d0e22]/80 border border-white/10 rounded-2xl backdrop-blur-md shadow-2xl z-20 w-52 cursor-pointer"
             >
-              <div className="w-full h-[360px] rounded-[1.4rem] bg-gradient-to-br from-white via-slate-50 to-blue-50 overflow-hidden border border-slate-200 relative">
-                <div className="absolute top-0 left-0 right-0 h-14 bg-white/90 border-b border-slate-200 flex items-center px-4 gap-2">
-                  <div className="flex gap-1.5">
-                    <span className="w-3 h-3 rounded-full bg-red-400" />
-                    <span className="w-3 h-3 rounded-full bg-amber-400" />
-                    <span className="w-3 h-3 rounded-full bg-emerald-400" />
-                  </div>
-                  <div className="mx-auto w-56 h-5 rounded-full bg-slate-100 border border-slate-200" />
-                </div>
-
-                <div className="absolute inset-0 pt-20 p-8">
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-400" />
-                    <div>
-                      <div className="text-sm font-bold text-slate-400 uppercase tracking-[0.25em]">AiTechPulze</div>
-                      <div className="text-slate-900 font-extrabold text-xl tracking-tight">Modern Architecture</div>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-12 gap-5">
-                    <div className="col-span-7 rounded-[1.2rem] bg-white border border-slate-200 shadow-sm p-5">
-                      <div className="w-32 h-4 rounded-full bg-slate-100 mb-3" />
-                      <div className="w-52 h-10 rounded-full bg-gradient-to-r from-blue-100 to-cyan-100" />
-                      <div className="mt-5 h-24 rounded-2xl bg-slate-50 border border-slate-100 overflow-hidden flex items-end px-4 pb-4">
-                        <div className="w-full h-16 rounded-full bg-gradient-to-r from-blue-200/80 via-cyan-200/60 to-blue-200/80" />
-                      </div>
-                    </div>
-
-                    <div className="col-span-5 rounded-[1.2rem] bg-white border border-slate-200 shadow-sm p-5">
-                      <div className="w-24 h-4 rounded-full bg-slate-100 mb-4" />
-                      <div className="space-y-3">
-                        <div className="h-8 rounded-lg bg-slate-100" />
-                        <div className="h-8 rounded-lg bg-slate-100" />
-                        <div className="h-8 rounded-lg bg-slate-100" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-5 grid grid-cols-3 gap-4">
-                    {["AI Agents", "Cloud Ops", "Dashboards"].map((item) => (
-                      <div key={item} className="rounded-[1.1rem] bg-white border border-slate-200 shadow-sm p-4">
-                        <div className="w-10 h-10 rounded-xl bg-blue-50 mb-3" />
-                        <div className="text-sm font-bold text-slate-900">{item}</div>
-                        <div className="text-xs text-slate-400 mt-1">Live preview</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[9px] font-mono text-emerald-400 font-bold uppercase tracking-wider">SEO PERFORMANCE</span>
+              </div>
+              <div className="text-white text-sm font-bold font-mono">Google SEO Rating</div>
+              <div className="text-[9px] text-slate-400 font-mono mt-1">CORE WEB VITALS: 100%</div>
+              <div className="w-full bg-white/10 h-[2px] mt-3 rounded-full overflow-hidden">
+                <motion.div
+                  animate={{ width: ['20%', '100%', '60%', '100%'] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="h-full bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)]"
+                />
               </div>
             </motion.div>
 
-            {/* Phone Mockup */}
-            <motion.div 
-              className="absolute right-0 bottom-0 w-44 md:w-60 aspect-[9/19] rounded-[2.2rem] bg-slate-900 shadow-[0_24px_70px_rgba(15,23,42,0.28)] border-[6px] border-slate-800 p-1.5 z-20"
-              whileHover={phoneHover}
-              whileTap={{ scale: 0.99 }}
-              transition={{ type: "spring", stiffness: 140, damping: 20 }}
+            {/* Futuristic Telemetry Card 2 - Bottom Right */}
+            <motion.div
+              initial={{ x: 50, y: 50, opacity: 0 }}
+              animate={{ x: 0, y: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.7 }}
+              whileHover={{ scale: 1.05 }}
+              className="absolute bottom-2 right-2 p-4 bg-[#0d0e22]/80 border border-white/10 rounded-2xl backdrop-blur-md shadow-2xl z-20 w-52 cursor-pointer"
             >
-              <div className="w-full h-full rounded-[1.7rem] bg-gradient-to-b from-blue-600 to-indigo-600 overflow-hidden relative">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-5 bg-slate-950 rounded-b-2xl z-10" />
-                <div className="pt-10 px-4 pb-4 h-full flex flex-col">
-                  <div className="w-2/3 h-5 rounded-full bg-white/20 mb-3" />
-                  <div className="rounded-[1.4rem] bg-white/10 border border-white/20 backdrop-blur-md p-4">
-                    <div className="text-white/80 text-[11px] font-bold uppercase tracking-[0.22em] mb-2">AiTechPulze</div>
-                    <div className="text-white font-extrabold leading-tight text-lg">
-                      AI products that feel premium on every device.
-                    </div>
-                  </div>
-                  <div className="mt-4 rounded-[1.4rem] bg-white p-4 shadow-lg flex-1 flex flex-col gap-3">
-                    <div className="h-7 rounded-xl bg-slate-100" />
-                    <div className="h-7 rounded-xl bg-slate-100" />
-                    <div className="mt-auto h-24 rounded-[1rem] bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-sm font-bold text-slate-900">Live Demo</div>
-                        <div className="text-xs text-slate-500">Mobile first UI</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div className="text-[9px] font-mono text-cyan-400 font-bold uppercase tracking-wider mb-1">DEVELOPMENT SERVICES</div>
+              <div className="text-white text-sm font-bold font-mono">SaaS, AI & Web Dev</div>
+              <div className="text-[9px] text-slate-400 font-mono mt-0.5 mb-2">SCALABLE ARCHITECTURES</div>
+              {/* Micro-sparkline using SVG */}
+              <svg className="w-full h-8 stroke-cyan-400 fill-none" viewBox="0 0 100 30">
+                <motion.path
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 2 }}
+                  strokeWidth="1.5"
+                  d="M0,25 Q15,5 30,20 T60,10 T90,25"
+                />
+              </svg>
             </motion.div>
-          </motion.div>
+
+            {/* Futuristic Telemetry Card 3 - Bottom Left */}
+            <motion.div
+              initial={{ x: -50, y: 50, opacity: 0 }}
+              animate={{ x: 0, y: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.9 }}
+              whileHover={{ scale: 1.05 }}
+              className="absolute bottom-10 left-2 p-4 bg-[#0d0e22]/80 border border-white/10 rounded-2xl backdrop-blur-md shadow-2xl z-20 w-52 cursor-pointer"
+            >
+              <div className="text-[9px] font-mono text-purple-400 font-bold uppercase tracking-wider mb-1">INTERNSHIP PORTAL</div>
+              <div className="text-white text-xs font-bold font-mono">Domain-Specific Tracks</div>
+              <div className="text-[9px] text-purple-300 font-mono mt-1">APPLICATIONS: OPEN & ACTIVE</div>
+            </motion.div>
+
+            {/* Cyber Connector Lines */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-cyan-400/20 fill-none stroke-dasharray-5" viewBox="0 0 500 500">
+              <line x1="90" y1="90" x2="190" y2="190" strokeWidth="1" />
+              <line x1="410" y1="410" x2="310" y2="310" strokeWidth="1" />
+              <line x1="80" y1="410" x2="190" y2="310" strokeWidth="1" />
+            </svg>
+          </div>
         </div>
       </div>
     </section>

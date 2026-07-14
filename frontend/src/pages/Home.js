@@ -11,9 +11,9 @@ import InternshipPopup from '../components/home/InternshipPopup';
 export default function Home() {
   useEffect(() => {
     // Add custom class to body for premium theme overrides if needed
-    document.body.classList.add('premium-light-theme');
+    document.body.classList.add('premium-dark-theme');
     return () => {
-      document.body.classList.remove('premium-light-theme');
+      document.body.classList.remove('premium-dark-theme');
     };
   }, []);
 
@@ -22,7 +22,7 @@ export default function Home() {
       <SEO path="/" title="AiTechPulze | Architecting Intelligent Digital Experiences" />
       <PremiumLoader />
       
-      <main className="bg-white selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
+      <main className="bg-[#060713] selection:bg-blue-950 selection:text-blue-200 overflow-x-hidden">
         <HeroSection />
         <FeaturedProductsSection />
         <AcademicHubSection />

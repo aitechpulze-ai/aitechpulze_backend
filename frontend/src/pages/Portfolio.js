@@ -33,20 +33,20 @@ export default function Portfolio() {
       <SEO title="Portfolio | AiTechPulze" description="Explore our flagship business products and academic research projects." path="/portfolio" />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none opacity-40">
-          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-50 rounded-full blur-[80px]" />
+      <section className="pt-32 pb-16 bg-[#060713] relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-20">
+          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-900 rounded-full blur-[100px]" />
         </div>
 
         <div className="container mx-auto px-6 max-w-6xl text-center relative z-10">
           <motion.div {...fadeUp(0)}>
-            <div className="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-bold tracking-widest uppercase mb-6 border border-blue-100 shadow-sm">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-blue-950/40 text-blue-400 text-[10px] font-bold tracking-widest uppercase mb-6 border border-blue-900/30 shadow-sm">
               BUSINESS PRODUCTS
             </div>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Flagship Products</span>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Flagship Products</span>
             </h1>
-            <p className="text-sm md:text-base text-slate-500 max-w-2xl mx-auto font-medium">
+            <p className="text-sm md:text-base text-slate-400 max-w-2xl mx-auto font-medium">
               Live enterprise products built and maintained by AiTechPulze.
             </p>
           </motion.div>
@@ -54,17 +54,17 @@ export default function Portfolio() {
       </section>
 
       {/* Business Products Section */}
-      <section className="pb-24 bg-white relative">
+      <section className="pb-24 bg-[#060713] relative">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {PRODUCTS.map((p, i) => (
               <motion.div 
                 key={p.name} 
                 {...fadeUp(i * 0.1)}
-                className="bg-white rounded-[2rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col h-full hover:shadow-[0_20px_60px_rgba(37,99,235,0.08)] transition-all duration-300"
+                className="bg-[#0d0e22]/50 rounded-[2rem] overflow-hidden border border-white/10 flex flex-col h-full hover:border-blue-500/30 hover:shadow-[0_20px_60px_rgba(6,182,212,0.15)] transition-all duration-300"
               >
                 {/* Image Box */}
-                <div className="h-56 bg-[#0B0F19] relative flex items-center justify-center p-8 border-b border-slate-800/50">
+                <div className="h-56 bg-[#0B0F19] relative flex items-center justify-center p-8 border-b border-white/10">
                   <div className="absolute top-4 right-4 bg-emerald-500 text-white text-[9px] font-bold tracking-widest uppercase px-3 py-1 rounded-full shadow-sm z-10">
                     LIVE PRODUCT
                   </div>
@@ -73,43 +73,43 @@ export default function Portfolio() {
                 
                 {/* Content */}
                 <div className="p-6 flex flex-col flex-grow">
-                  <div className="text-blue-600 text-[9px] font-bold tracking-widest uppercase mb-2">
+                  <div className="text-cyan-400 text-[9px] font-bold tracking-widest uppercase mb-2">
                     {p.category}
                   </div>
-                <h3 className="text-xl font-extrabold text-slate-900 mb-1">{p.name}</h3>
-                <p className="text-blue-600 text-xs font-bold mb-4">{p.tagline}</p>
-                <p className="text-xs text-slate-500 leading-relaxed mb-6">
-                  {p.description}
-                </p>
+                  <h3 className="text-xl font-extrabold text-white mb-1">{p.name}</h3>
+                  <p className="text-cyan-400 text-xs font-bold mb-4">{p.tagline}</p>
+                  <p className="text-xs text-slate-400 leading-relaxed mb-6">
+                    {p.description}
+                  </p>
 
-                {/* Features (Green pills) */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {p.features.slice(0,4).map((f) => (
-                    <span key={f} className="inline-flex items-center px-2.5 py-1.5 bg-emerald-50/50 text-slate-600 text-[10px] font-medium rounded-full border border-emerald-100">
-                      {Icons.check}
-                      {f}
-                    </span>
-                  ))}
-                </div>
+                  {/* Features (Green pills) */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {p.features.slice(0,4).map((f) => (
+                      <span key={f} className="inline-flex items-center px-2.5 py-1.5 bg-emerald-950/20 text-emerald-400 text-[10px] font-medium rounded-full border border-emerald-900/30">
+                        {Icons.check}
+                        {f}
+                      </span>
+                    ))}
+                  </div>
 
-                {/* Tech Stack (Blue pills) */}
-                <div className="flex flex-wrap gap-2 mb-8 flex-grow">
-                  {p.tech.map((t) => (
-                    <span key={t} className="px-3 py-1 bg-blue-50/50 text-blue-600 text-[10px] font-bold rounded-full border border-blue-100">
-                      {t}
-                    </span>
-                  ))}
-                </div>
+                  {/* Tech Stack (Blue pills) */}
+                  <div className="flex flex-wrap gap-2 mb-8 flex-grow">
+                    {p.tech.map((t) => (
+                      <span key={t} className="px-3 py-1 bg-blue-950/40 text-blue-400 text-[10px] font-bold rounded-full border border-blue-900/30">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
 
-                {/* Buttons */}
-                <div className="flex flex-col gap-3 mt-auto pt-4 border-t border-slate-100">
-                  <a href={p.demo} target="_blank" rel="noopener noreferrer" className="w-full inline-flex justify-center items-center px-5 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold rounded-xl shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all">
-                    Visit {p.name} &rarr;
-                  </a>
-                  <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer" className="w-full inline-flex justify-center items-center px-5 py-3 bg-white text-slate-700 text-xs font-bold rounded-xl border border-slate-200 shadow-sm hover:border-slate-300 hover:bg-slate-50 transition-all">
-                    Enquire
-                  </a>
-                </div>
+                  {/* Buttons */}
+                  <div className="flex flex-col gap-3 mt-auto pt-4 border-t border-white/10">
+                    <a href={p.demo} target="_blank" rel="noopener noreferrer" className="w-full inline-flex justify-center items-center px-5 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold rounded-xl shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all cursor-pointer">
+                      Visit {p.name} &rarr;
+                    </a>
+                    <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer" className="w-full inline-flex justify-center items-center px-5 py-3 bg-white/5 text-white text-xs font-bold rounded-xl border border-white/10 shadow-sm hover:bg-white/10 transition-all cursor-pointer">
+                      Enquire
+                    </a>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -118,24 +118,24 @@ export default function Portfolio() {
       </section>
 
       {/* Divider */}
-      <div className="w-full border-t border-slate-100 relative">
-        <div className="absolute left-1/2 -translate-x-1/2 -top-3 bg-white px-4 text-[10px] font-bold tracking-widest text-slate-400 uppercase">
+      <div className="w-full border-t border-white/5 relative">
+        <div className="absolute left-1/2 -translate-x-1/2 -top-3 bg-[#060713] px-4 text-[10px] font-bold tracking-widest text-slate-500 uppercase">
           ACADEMIC PROJECTS
         </div>
       </div>
 
       {/* Academic Projects Section (Mirrors AcademicHub) */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-[#060713]">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="text-center mb-12">
             <motion.div {...fadeUp(0)}>
-              <div className="inline-block px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-bold tracking-widest uppercase mb-4 border border-emerald-100 shadow-sm">
+              <div className="inline-block px-4 py-1.5 rounded-full bg-emerald-950/40 text-emerald-400 text-[10px] font-bold tracking-widest uppercase mb-4 border border-emerald-900/30 shadow-sm">
                 ACADEMIC INNOVATION HUB
               </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
-                Student & Research <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">Projects</span>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-4">
+                Student & Research <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Projects</span>
               </h2>
-              <p className="text-sm md:text-base text-slate-500 max-w-2xl mx-auto font-medium mb-8">
+              <p className="text-sm md:text-base text-slate-400 max-w-2xl mx-auto font-medium mb-8">
                 IEEE projects, final year projects, and AI research built for students across India.
               </p>
               
@@ -145,7 +145,7 @@ export default function Portfolio() {
                   <button 
                     key={f}
                     onClick={() => setFilter(f)}
-                    className={`px-5 py-2 rounded-full text-xs font-bold transition-all border ${filter === f ? 'bg-teal-500 text-white border-teal-500 shadow-lg shadow-teal-500/20' : 'bg-white text-slate-600 border-slate-200 hover:border-teal-300'}`}
+                    className={`px-5 py-2 rounded-full text-xs font-bold transition-all border cursor-pointer ${filter === f ? 'bg-teal-500 text-slate-950 border-teal-500 shadow-lg shadow-teal-500/20' : 'bg-white/5 text-slate-300 border-white/10 hover:border-teal-400'}`}
                   >
                     {f}
                   </button>
@@ -164,28 +164,28 @@ export default function Portfolio() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-white rounded-[2rem] p-6 shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-slate-100 flex flex-col h-full hover:shadow-[0_20px_60px_rgba(20,184,166,0.08)] transition-shadow duration-300"
+                  className="bg-[#0d0e22]/50 rounded-[2rem] p-6 border border-white/10 flex flex-col h-full hover:border-teal-500/30 hover:shadow-[0_20px_60px_rgba(20,184,166,0.15)] transition-all duration-300"
                 >
-                  <div className="h-48 mb-6 bg-slate-50 rounded-2xl overflow-hidden flex items-center justify-center p-4">
+                  <div className="h-48 mb-6 bg-slate-900 rounded-2xl overflow-hidden flex items-center justify-center p-4">
                     <img src={p.image} alt={p.title} className="max-w-full max-h-full object-contain" />
                   </div>
-                  <div className="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-bold tracking-widest uppercase mb-4 w-fit">
+                  <div className="inline-block px-3 py-1 rounded-full bg-emerald-950/40 text-emerald-400 text-[10px] font-bold tracking-widest uppercase mb-4 w-fit border border-emerald-900/30">
                     {p.category}
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-3">{p.title}</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed mb-6 flex-grow">
+                  <h3 className="text-lg font-bold text-white mb-3">{p.title}</h3>
+                  <p className="text-xs text-slate-400 leading-relaxed mb-6 flex-grow">
                     {p.description}
                   </p>
                   
                   <div className="flex flex-wrap gap-2 mb-6">
                     {p.tech.map(t => (
-                      <span key={t} className="px-3 py-1 bg-blue-50 text-blue-600 text-[10px] font-bold rounded-full border border-blue-100">
+                      <span key={t} className="px-3 py-1 bg-blue-950/40 text-blue-400 text-[10px] font-bold rounded-full border border-blue-900/30">
                         {t}
                       </span>
                     ))}
                   </div>
                   
-                  <a href={p.demo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-5 py-2.5 bg-white text-slate-700 text-xs font-bold rounded-xl border border-slate-200 shadow-sm hover:border-slate-300 hover:bg-slate-50 transition-all w-fit">
+                  <a href={p.demo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-5 py-2.5 bg-white/5 text-white text-xs font-bold rounded-xl border border-white/10 shadow-sm hover:bg-white/10 transition-all w-fit cursor-pointer">
                     View Demo &rarr;
                   </a>
                 </motion.div>
@@ -196,22 +196,22 @@ export default function Portfolio() {
       </section>
 
       {/* CTA Section */}
-      <section className="pb-24 bg-white relative">
+      <section className="pb-24 bg-[#060713] relative border-t border-white/5 pt-24">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <motion.div 
             {...fadeUp(0)}
-            className="p-12 md:p-16 rounded-[2.5rem] relative overflow-hidden bg-gradient-to-br from-indigo-50/80 via-purple-50/80 to-white shadow-[0_20px_60px_rgba(37,99,235,0.05)] border border-indigo-100/50"
+            className="p-12 md:p-16 rounded-[2.5rem] relative overflow-hidden bg-gradient-to-br from-[#0d0e22] to-[#060713] shadow-[0_20px_60px_rgba(0,0,0,0.35)] border border-white/10"
           >
-            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4 tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4 tracking-tight">
               Have a Project Idea?
             </h2>
-            <p className="text-slate-500 text-sm md:text-base font-medium mb-8 max-w-md mx-auto">
+            <p className="text-slate-400 text-sm md:text-base font-medium mb-8 max-w-md mx-auto">
               Whether you're a business owner or a student — we build it right.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link 
                 to="/get-quote" 
-                className="inline-flex items-center justify-center px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-bold rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:-translate-y-0.5 transition-all"
+                className="inline-flex items-center justify-center px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-bold rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:-translate-y-0.5 transition-all cursor-pointer"
               >
                 Get a Free Quote &rarr;
               </Link>
@@ -219,7 +219,7 @@ export default function Portfolio() {
                 href={COMPANY.whatsapp} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-flex items-center justify-center px-6 py-3.5 bg-white text-slate-700 text-sm font-bold rounded-xl border border-slate-200 shadow-sm hover:border-slate-300 hover:bg-slate-50 transition-all"
+                className="inline-flex items-center justify-center px-6 py-3.5 bg-white/5 text-white text-sm font-bold rounded-xl border border-white/10 shadow-sm hover:bg-white/10 transition-all cursor-pointer"
               >
                 {Icons.whatsapp}
                 WhatsApp Us

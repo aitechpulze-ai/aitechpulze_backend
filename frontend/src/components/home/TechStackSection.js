@@ -98,14 +98,14 @@ function getTechIcon(badge) {
 
 export default function TechStackSection() {
   return (
-    <section className="section bg-white relative overflow-hidden">
+    <section className="section bg-[#060713] relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-slate-50 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#08091a] to-transparent" />
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.015]"
           style={{
             backgroundImage:
-              'linear-gradient(rgba(37,99,235,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.35) 1px, transparent 1px)',
+              'linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)',
             backgroundSize: '56px 56px',
           }}
         />
@@ -116,7 +116,7 @@ export default function TechStackSection() {
           <motion.div {...fadeUp(0)} className="section-label mx-auto w-fit mb-4">
             Technology
           </motion.div>
-          <motion.h2 {...fadeUp(0.05)} className="heading-md">
+          <motion.h2 {...fadeUp(0.05)} className="heading-md text-white">
             Powered by <span className="text-gradient">Modern Stack</span>
           </motion.h2>
           <motion.p {...fadeUp(0.1)} className="mt-4 text-base" style={{ color: 'var(--text-3)' }}>
@@ -128,15 +128,15 @@ export default function TechStackSection() {
           {TECH_STACK.map((tech, index) => (
             <div
               key={tech.name}
-              className="w-[110px] h-[110px] rounded-[20px] border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.04)] flex flex-col items-center justify-center gap-3 hover:shadow-[0_20px_50px_rgba(37,99,235,0.10)] transition-all duration-300"
+              className="w-[110px] h-[110px] rounded-[20px] border border-white/10 bg-[#0d0e22]/50 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.3)] flex flex-col items-center justify-center gap-3 hover:shadow-[0_20px_50px_rgba(37,99,235,0.15)] transition-all duration-300"
               style={{
                 transform: index % 2 === 0 ? 'translateY(0)' : 'translateY(10px)',
               }}
             >
-              <div className="w-11 h-11 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center">
+              <div className="w-11 h-11 rounded-2xl bg-[#060713] border border-white/10 flex items-center justify-center">
                 {getTechIcon(tech.badge)}
               </div>
-              <div className="text-xs font-semibold text-slate-600 text-center px-2">
+              <div className="text-xs font-semibold text-slate-300 text-center px-2">
                 {tech.name}
               </div>
             </div>
